@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 // import { Link } from 'gatsby'
 
@@ -6,7 +7,6 @@ import Layout from '../components/layout'
 
 const IndexPage = (props) => {
 
-  // eslint-disable-next-line react/prop-types
   const trains = props.data.allTrain.edges
   return (
     <Layout>
@@ -44,5 +44,8 @@ export const query = graphql`
   }
 `
 
+IndexPage.propTypes = {
+  data: PropTypes.object,
+}
 
 export default IndexPage
