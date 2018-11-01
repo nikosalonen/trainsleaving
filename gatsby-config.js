@@ -30,8 +30,8 @@ module.exports = {
         name: `Lähtevät junat`,
         short_name: `lähtevät`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0078ca`,
+        theme_color: `#0078ca`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
