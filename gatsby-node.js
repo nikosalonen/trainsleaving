@@ -1,7 +1,7 @@
 const axios = require(`axios`)
 const crypto = require(`crypto`)
 
-exports.onPageCreate = async ({ /* node,*/ actions }) => {
+exports.onCreatePage = async ({ /* node,*/ actions }) => {
   const { createNode /* , createNodeField*/ } = actions
 
   // fetch raw data from the Train api
