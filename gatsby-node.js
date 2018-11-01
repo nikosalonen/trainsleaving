@@ -1,8 +1,8 @@
 const axios = require(`axios`)
 const crypto = require(`crypto`)
 
-exports.sourceNodes = async ({ boundActionCreators }) => {
-  const { createNode } = boundActionCreators
+exports.onPageCreate = async ({ node, actions }) => {
+  const { createNode, createNodeField } = actions
 
   // fetch raw data from the Train api
   const fetchTrain = () => axios.get(`https://rata.digitraffic.fi/api/v1/live-trains/station/HKI?arrived_trains=5&arriving_trains=5&departed_trains=5&departing_trains=5&include_nonstopping=false`)
