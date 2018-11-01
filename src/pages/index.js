@@ -1,17 +1,48 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql } from "gatsby"
+// import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 
-const IndexPage = () => (
-  <Layout>
-    <h1>Junia jee</h1>
-    <p>
-      https://rata.digitraffic.fi/api/v1/live-trains/station/HKI?arrived_trains=5&arriving_trains=5&departed_trains=5&departing_trains=5&include_nonstopping=false
-    </p>
+const IndexPage = (props) => {
 
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  // eslint-disable-next-line react/prop-types
+  const trains = props.data.allTrain.edges
+  return (
+    <Layout>
+      <h1>Junia jee</h1>
+      {trains.map((train, i) => {
+        const trainData = train.node
+        if (trainData.commuterLineID.length) {
+
+          return (
+            <div key={i}>
+              <p>Category: {trainData.trainCategory}</p>
+              <p>LineID: {trainData.commuterLineID}</p>
+            </div>
+          )
+        }
+      })}
+
+
+      {/* <Link to="/page-2/">Go to page 2</Link> */}
+    </Layout>
+  )
+}
+
+
+export const query = graphql`
+  query RandomUserQuery {
+    allTrain {
+      edges {
+        node {
+          trainCategory
+          commuterLineID
+        }
+      }
+    }
+  }
+`
+
 
 export default IndexPage
