@@ -1,6 +1,6 @@
 {
   "name": "trainstrainstrains",
-  "description": "Which train leaves nex to my destination",
+  "description": "Which train leaves next to my destination",
   "version": "0.0.1",
   "author": "Niko Salonen <nikotsalonen@gmail.com>",
   "dependencies": {
