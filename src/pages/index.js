@@ -1,18 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// import { graphql } from "gatsby"
-import Time from '../components/time'
-import Trains from '../components/trains'
-import Settings from '../components/settings'
 import Layout from '../components/layout'
+
+import App from '../components/app'
 
 const IndexPage = () => {
   return (
     <Layout>
-      <Time />
-      <Settings />
-      <Trains />
+      <App />
     </Layout>
   )
 }

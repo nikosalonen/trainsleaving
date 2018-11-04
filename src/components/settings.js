@@ -1,4 +1,5 @@
 import React from 'react'
+// import AppContext from '../context/context'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Settings extends React.Component {
   }
 
   render() {
-    return <div>Settings</div>
+    return <div />
   }
 }
 

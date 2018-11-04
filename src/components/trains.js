@@ -1,95 +1,69 @@
 import React from 'react'
-import axios from 'axios'
 import Train from './train'
 import { DateTime } from 'luxon'
+import { AppContext } from '../context/context'
 
 class Trains extends React.Component {
-  state = {
-    trains: [],
-    settings: {
-      from: `TKL`,
-      to: `HKI`,
-      showCancelled: true,
-      includeLongDistance: false,
-      includeCommuter: true,
-      includeRussia: false,
-    },
-  }
-  componentDidMount() {
-    this.getTrains()
-    this.interval = setInterval(() => this.getTrains(), 1000 * 60)
-  }
-  componentWillUnmount() {
-    this._mounted = false
-  }
-
-  getTrains() {
-    const from = this.state.settings.from
-    axios.
-      get(
-        `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
-      ).
-      then(res => {
-        let trains = res.data
-        this.setState({ trains })
-      })
-  }
-
   render() {
+    let props = this.props
+    let app = this.context
+
+    console.log(app, props)
     return (
       <div>
         <h1>
-          🚂 Junat {this.state.settings.from} ➡️ {this.state.settings.to}
+          🚂 Junat {app.settings.from} ➡️ {app.settings.to}
         </h1>
-        <div id="trains" />
-        {this.state.trains.
-          sort((a, b) => {
-            const fromA = a.timeTableRows.findIndex(
-              row =>
-                row.stationShortCode === this.state.settings.from &&
-                row.type === `DEPARTURE`
-            )
+        <div id="trains">
+          {app.trains &&
+            app.trains.
+              sort((a, b) => {
+                const fromA = a.timeTableRows.findIndex(
+                  row =>
+                    row.stationShortCode === app.settings.from &&
+                    row.type === `DEPARTURE`
+                )
 
-            const fromB = b.timeTableRows.findIndex(
-              row =>
-                row.stationShortCode === this.state.settings.from &&
-                row.type === `DEPARTURE`
-            )
+                const fromB = b.timeTableRows.findIndex(
+                  row =>
+                    row.stationShortCode === app.settings.from &&
+                    row.type === `DEPARTURE`
+                )
 
-            const first =
-              a.timeTableRows[fromA].liveEstimateTime !== undefined
-                ? a.timeTableRows[fromA].liveEstimateTime
-                : a.timeTableRows[fromA].scheduledTime
+                const first =
+                  a.timeTableRows[fromA].liveEstimateTime !== undefined
+                    ? a.timeTableRows[fromA].liveEstimateTime
+                    : a.timeTableRows[fromA].scheduledTime
 
-            const second =
-              b.timeTableRows[fromB].liveEstimateTime !== undefined
-                ? b.timeTableRows[fromB].liveEstimateTime
-                : b.timeTableRows[fromB].scheduledTime
+                const second =
+                  b.timeTableRows[fromB].liveEstimateTime !== undefined
+                    ? b.timeTableRows[fromB].liveEstimateTime
+                    : b.timeTableRows[fromB].scheduledTime
 
-            return DateTime.fromISO(first) - DateTime.fromISO(second)
-          }).
-          map(train => {
-            if (
-              (!this.state.settings.includeRussia &&
-                train.trainType === `AE`) ||
-              (!this.state.settings.includeLongDistance &&
-                train.trainCategory === `Long-distance`) ||
-              (!this.state.settings.includeCommuter &&
-                train.trainCategory === `Commuter`)
-            ) {
-              return false
-            }
-            return (
-              <Train
-                key={train.trainNumber}
-                data={train}
-                settings={this.state.settings}
-              />
-            )
-          })}
+                return DateTime.fromISO(first) - DateTime.fromISO(second)
+              }).
+              map(train => {
+                if (
+                  (!app.settings.includeRussia && train.trainType === `AE`) ||
+                  (!app.settings.includeLongDistance &&
+                    train.trainCategory === `Long-distance`) ||
+                  (!app.settings.includeCommuter &&
+                    train.trainCategory === `Commuter`)
+                ) {
+                  return false
+                }
+                return (
+                  <Train
+                    key={train.trainNumber}
+                    data={train}
+                    settings={app.settings}
+                  />
+                )
+              })}
+        </div>
       </div>
     )
   }
 }
-
+Trains.contextType = AppContext
 export default Trains
