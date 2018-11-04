@@ -31,11 +31,11 @@ const Train = props => {
       {` `}
       lähtee
       {` `}
-      {departureFrom[0].liveEstimateTime
-        ? DateTime.fromISO(departureFrom[0].liveEstimateTime).
+      {departureFrom[0].differenceInMinutes > 1
+        ? `~ ${DateTime.fromISO(departureFrom[0].liveEstimateTime).
           setLocale(`fi-FI`).
-          toLocaleString(DateTime.TIME_24_SIMPLE)
-        : `~  ${DateTime.fromISO(departureFrom[0].scheduledTime).
+          toLocaleString(DateTime.TIME_24_SIMPLE)}`
+        : ` ${DateTime.fromISO(departureFrom[0].scheduledTime).
           setLocale(`fi-FI`).
           toLocaleString(DateTime.TIME_24_SIMPLE)}`}
       {` `}

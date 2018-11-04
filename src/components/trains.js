@@ -41,6 +41,7 @@ class Trains extends React.Component {
         <h1>
           🚂 Junat {this.state.settings.from} ➡️ {this.state.settings.to}
         </h1>
+        <div id="trains" />
         {this.state.trains.
           sort((a, b) => {
             const fromA = a.timeTableRows.findIndex(
@@ -55,10 +56,17 @@ class Trains extends React.Component {
                 row.type === `DEPARTURE`
             )
 
-            return (
-              DateTime.fromISO(a.timeTableRows[fromA].scheduledTime) -
-              DateTime.fromISO(b.timeTableRows[fromB].scheduledTime)
-            )
+            const first =
+              a.timeTableRows[fromA].liveEstimateTime !== undefined
+                ? a.timeTableRows[fromA].liveEstimateTime
+                : a.timeTableRows[fromA].scheduledTime
+
+            const second =
+              b.timeTableRows[fromB].liveEstimateTime !== undefined
+                ? b.timeTableRows[fromB].liveEstimateTime
+                : b.timeTableRows[fromB].scheduledTime
+
+            return DateTime.fromISO(first) - DateTime.fromISO(second)
           }).
           map(train => {
             if (
