@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Train from './train'
+import { DateTime } from 'luxon'
 
 class Trains extends React.Component {
   state = {
@@ -26,11 +27,10 @@ class Trains extends React.Component {
     const from = this.state.settings.from
     axios.
       get(
-        `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=1&arriving_trains=15&departed_trains=0&departing_trains=5&include_nonstopping=false`
+        `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
       ).
       then(res => {
         let trains = res.data
-
         this.setState({ trains })
       })
   }
@@ -38,25 +38,47 @@ class Trains extends React.Component {
   render() {
     return (
       <div>
-        {this.state.trains.map((train, i) => {
-          if (!this.state.settings.includeRussia && train.trainType === `AE`) {
-            return false
-          }
-          if (
-            !this.state.settings.includeLongDistance &&
-            train.trainCategory === `Long-distance`
-          ) {
-            return false
-          }
+        <h1>
+          🚂 Junat {this.state.settings.from} ➡️ {this.state.settings.to}
+        </h1>
+        {this.state.trains.
+          sort((a, b) => {
+            const fromA = a.timeTableRows.findIndex(
+              row =>
+                row.stationShortCode === this.state.settings.from &&
+                row.type === `DEPARTURE`
+            )
 
-          if (
-            !this.state.settings.includeCommuter &&
-            train.trainCategory === `Commuter`
-          ) {
-            return false
-          }
-          return <Train key={i} data={train} settings={this.state.settings} />
-        })}
+            const fromB = b.timeTableRows.findIndex(
+              row =>
+                row.stationShortCode === this.state.settings.from &&
+                row.type === `DEPARTURE`
+            )
+
+            return (
+              DateTime.fromISO(a.timeTableRows[fromA].scheduledTime) -
+              DateTime.fromISO(b.timeTableRows[fromB].scheduledTime)
+            )
+          }).
+          map(train => {
+            if (
+              (!this.state.settings.includeRussia &&
+                train.trainType === `AE`) ||
+              (!this.state.settings.includeLongDistance &&
+                train.trainCategory === `Long-distance`) ||
+              (!this.state.settings.includeCommuter &&
+                train.trainCategory === `Commuter`)
+            ) {
+              return false
+            }
+            return (
+              <Train
+                key={train.trainNumber}
+                data={train}
+                settings={this.state.settings}
+              />
+            )
+          })}
       </div>
     )
   }
