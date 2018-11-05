@@ -19,7 +19,7 @@ class App extends React.Component {
       // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
       let query = `{
         viewer {
-          getStationsTrainsUsingGET(departing_trains: 15, station: "TKL") {
+          getStationsTrainsUsingGET(departing_trains: 15, station: "${from}") {
             trainType
             cancelled
             commuterLineID
