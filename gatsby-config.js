@@ -47,13 +47,6 @@ module.exports = {
         anonymize: false,
         // Setting this parameter is also optional
         respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        // exclude: [ `/preview/**`, `/do-not-track/me/too/` ],
-        // Enables Google Optimize using your container Id
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // Any additional create only fields (optional)
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
         cookieDomain: `lahtevat.info`,
       },
     },
