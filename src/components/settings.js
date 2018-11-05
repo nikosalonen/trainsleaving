@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppContext } from '../context/context'
+// import { AppContext } from '../context/context'
 
 class Settings extends React.Component {
   constructor(props) {
