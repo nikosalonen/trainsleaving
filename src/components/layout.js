@@ -21,12 +21,16 @@ const Layout = ({ children }) => (
       <div>
         <Helmet
           title={data.site.siteMetadata.title}
-          meta={[
-            { name: `description`, content: `Sample` },
-            { name: `keywords`, content: `sample, something` },
-          ]}
+
         >
-          <html lang="en" />
+          <html lang="fi" />
+        </Helmet>
+        <Helmet>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script dangerouslySetInnerHTML={{
+            __html: `(adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-0748442567853482",
+      enable_page_level_ads: true});` }}></script>
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
@@ -39,6 +43,7 @@ const Layout = ({ children }) => (
         >
           {children}
         </div>
+
       </div>
     )}
   />
