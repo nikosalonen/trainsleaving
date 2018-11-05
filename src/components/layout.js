@@ -19,19 +19,11 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <div>
-        <Helmet
-          title={data.site.siteMetadata.title}
-
-        >
+        <Helmet title={data.site.siteMetadata.title}>
           <html lang="fi" />
         </Helmet>
-        <Helmet>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <script dangerouslySetInnerHTML={{
-            __html: `(adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-0748442567853482",
-      enable_page_level_ads: true});` }}></script>
-        </Helmet>
+
+
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -43,7 +35,6 @@ const Layout = ({ children }) => (
         >
           {children}
         </div>
-
       </div>
     )}
   />
