@@ -50,6 +50,8 @@ class App extends React.Component {
         },
       }).then(result => {
         console.log(result.data)
+        let trains = result.data
+        this.setState({ trains })
       })
 
       // axios.
