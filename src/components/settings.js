@@ -1,5 +1,5 @@
 import React from 'react'
-// import AppContext from '../context/context'
+import { AppContext } from '../context/context'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -8,6 +8,10 @@ class Settings extends React.Component {
   }
 
   render() {
+    let props = this.props
+    let app = this.context
+
+    console.log(app, props)
     return <div />
   }
 }
