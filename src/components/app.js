@@ -16,6 +16,46 @@ class App extends React.Component {
 
     this.getTrains = () => {
       const from = app.settings.from
+      // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
+      // let query = `{
+      //   viewer {
+      //     getLiveTrainsByVersionUsingGET{
+      //       cancelled
+      //       commuterLineID
+      //       operatorShortCode
+      //       timeTableRows {
+      //         actualTime
+      //         cancelled
+      //         commercialStop
+      //         commercialTrack
+      //         countryCode
+      //         differenceInMinutes
+      //         estimateSource
+      //         liveEstimateTime
+      //         scheduledTime
+      //         stationShortCode
+      //         stationUICCode
+      //         trainStopping
+      //         type
+      //         unknownDelay
+      //       }
+      //     }
+      //   }
+      // }`
+
+      // axios({
+      //   url: `https://rata.digitraffic.fi/api/v1/graphql/?`,
+      //   header: {
+      //     'Access-Control-Allow-Origin':`*`
+      //   },
+      //   method: `post`,
+      //   data: {
+      //     query: query
+      //   }
+      // }).then((result) => {
+      //   console.log(result.data)
+      // })
+
       axios.
         get(
           `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
@@ -40,8 +80,8 @@ class App extends React.Component {
     return (
       <div>
         <Time />
-        <Settings />
         <AppContext.Provider value={this.state}>
+          <Settings />
           <Trains />
         </AppContext.Provider>
       </div>
