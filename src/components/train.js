@@ -13,15 +13,17 @@ const Train = props => {
     row => row.stationShortCode === settings.to && row.type === `ARRIVAL`
   )
 
-  if (from > to) {
+  if (from > to || from === -1 || to === -1 || (train.timeTableRows[from] && train.timeTableRows[from].actualTime)) {
     return false
   }
+  console.log(train)
+  // console.log(from, to)
 
   const departureFrom = train.timeTableRows.filter(
     station =>
       station.stationShortCode === props.settings.from &&
       station.type === `DEPARTURE`
-  )
+  )[0]
 
   // console.log(departureFrom)
 
@@ -31,15 +33,17 @@ const Train = props => {
       {` `}
       lähtee
       {` `}
-      {departureFrom[0].differenceInMinutes > 1 && departureFrom[0].liveEstimateTime !== null
-        ? `~ ${DateTime.fromISO(departureFrom[0].liveEstimateTime).
+      {departureFrom.differenceInMinutes && departureFrom.differenceInMinutes > 1 && departureFrom.liveEstimateTime !== null
+        ? `~ ${DateTime.fromISO(departureFrom.liveEstimateTime).
           setLocale(`fi-FI`).
           toLocaleString(DateTime.TIME_24_SIMPLE)}`
-        : ` ${DateTime.fromISO(departureFrom[0].scheduledTime).
+        :
+        ` ${DateTime.fromISO(departureFrom.scheduledTime).
           setLocale(`fi-FI`).
-          toLocaleString(DateTime.TIME_24_SIMPLE)}`}
+          toLocaleString(DateTime.TIME_24_SIMPLE)}`
+      }
       {` `}
-      raiteelta {departureFrom[0].commercialTrack}
+      raiteelta {departureFrom.commercialTrack}
     </div>
   )
 }

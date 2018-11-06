@@ -17,6 +17,7 @@ class Trains extends React.Component {
           {app.trains &&
             app.trains.
               sort((a, b) => {
+                console.log(a, b)
                 const fromA = a.timeTableRows.findIndex(
                   row =>
                     row.stationShortCode === app.settings.from &&
@@ -28,18 +29,22 @@ class Trains extends React.Component {
                     row.stationShortCode === app.settings.from &&
                     row.type === `DEPARTURE`
                 )
+                console.log(fromA, fromB)
+                if (fromA && fromB) {
 
-                const first =
-                  a.timeTableRows[fromA].liveEstimateTime !== null
+
+                  const first =
+                  a.timeTableRows[fromA].liveEstimateTime
                     ? a.timeTableRows[fromA].liveEstimateTime
                     : a.timeTableRows[fromA].scheduledTime
 
-                const second =
-                  b.timeTableRows[fromB].liveEstimateTime !== null
+                  const second =
+                  b.timeTableRows[fromB].liveEstimateTime
                     ? b.timeTableRows[fromB].liveEstimateTime
                     : b.timeTableRows[fromB].scheduledTime
 
-                return DateTime.fromISO(first) - DateTime.fromISO(second)
+                  return DateTime.fromISO(first) - DateTime.fromISO(second)
+                }
               }).
               map(train => {
                 if (

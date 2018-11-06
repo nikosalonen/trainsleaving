@@ -3,8 +3,8 @@ import React from 'react'
 export const app = {
   trains: [],
   settings: {
-    from: `TKL`,
-    to: `HKI`,
+    from: `HKI`,
+    to: `TKL`,
     showCancelled: true,
     includeLongDistance: false,
     includeCommuter: true,

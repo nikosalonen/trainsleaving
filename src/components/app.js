@@ -21,7 +21,8 @@ class App extends React.Component {
 
       let query = `{
         viewer {
-          getStationsTrainsUsingGET(  station: "${from}",include_nonstopping:false, arriving_trains:15) {
+          getStationsTrainsUsingGET( where:"[*trainCategory=Commuter]", station: "${from}",include_nonstopping:false, arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:50) {
+            trainCategory
             trainType
             cancelled
             commuterLineID
