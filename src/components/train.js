@@ -16,7 +16,6 @@ const Train = props => {
   if (from > to || from === -1 || to === -1 || (train.timeTableRows[from] && train.timeTableRows[from].actualTime)) {
     return false
   }
-  console.log(train)
   // console.log(from, to)
 
   const departureFrom = train.timeTableRows.filter(
