@@ -17,51 +17,54 @@ class App extends React.Component {
     this.getTrains = () => {
       const from = app.settings.from
       // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
-      // let query = `{
-      //   viewer {
-      //     getStationsTrainsUsingGET(minutes_before_departure: 20,  station: "${from}") {
-      //       trainType
-      //       cancelled
-      //       commuterLineID
-      //       timeTableRows {
-      //         trainStopping
-      //         stationShortCode
-      //         type
-      //         commercialStop
-      //         commercialTrack
-      //         cancelled
-      //         scheduledTime
-      //         liveEstimateTime
-      //         actualTime
-      //         differenceInMinutes
-      //       }
-      //     }
-      //   }
-      // }`
 
-      // axios({
-      //   url: `https://rata.digitraffic.fi/api/v1/graphql/graphiql?`,
-      //   method: `post`,
-      //   headers: {
-      //     'Content-Type': `application/json`,
-      //   },
-      //   data: {
-      //     query: query,
-      //   },
-      // }).then(result => {
-      //   console.log(result.data)
-      //   let trains = result.data
-      //   this.setState({ trains })
-      // })
 
-      axios.
-        get(
-          `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
-        ).
-        then(res => {
-          let trains = res.data
-          this.setState({ trains })
-        })
+      let query = `{
+        viewer {
+          getStationsTrainsUsingGET(  station: "${from}",include_nonstopping:false, arriving_trains:15) {
+            trainType
+            cancelled
+            commuterLineID
+            trainNumber
+            timeTableRows {
+              trainStopping
+              stationShortCode
+              type
+              commercialStop
+              commercialTrack
+              cancelled
+              scheduledTime
+              liveEstimateTime
+              actualTime
+              differenceInMinutes
+            }
+          }
+        }
+      }`
+
+      axios({
+        url: `https://rata.digitraffic.fi/api/v1/graphql/graphiql?`,
+        method: `post`,
+        headers: {
+          'Content-Type': `application/json`,
+        },
+        data: {
+          query: query,
+        },
+      }).then(result => {
+        let trains = result.data.data.viewer.getStationsTrainsUsingGET
+        console.log(trains)
+        this.setState({ trains })
+      })
+
+      // axios.
+      //   get(
+      //     `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
+      //   ).
+      //   then(res => {
+      //     let trains = res.data
+      //     this.setState({ trains })
+      //   })
     }
   }
 

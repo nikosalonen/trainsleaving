@@ -23,7 +23,7 @@ const Train = props => {
       station.type === `DEPARTURE`
   )
 
-  console.log(departureFrom)
+  // console.log(departureFrom)
 
   return (
     <div>
@@ -31,7 +31,7 @@ const Train = props => {
       {` `}
       lähtee
       {` `}
-      {departureFrom[0].differenceInMinutes > 1
+      {departureFrom[0].differenceInMinutes > 1 && departureFrom[0].liveEstimateTime !== null
         ? `~ ${DateTime.fromISO(departureFrom[0].liveEstimateTime).
           setLocale(`fi-FI`).
           toLocaleString(DateTime.TIME_24_SIMPLE)}`

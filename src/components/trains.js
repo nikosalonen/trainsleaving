@@ -5,10 +5,9 @@ import { AppContext } from '../context/context'
 
 class Trains extends React.Component {
   render() {
-    let props = this.props
+    // let props = this.props
     let app = this.context
 
-    console.log(app, props)
     return (
       <div>
         <h1>
@@ -31,12 +30,12 @@ class Trains extends React.Component {
                 )
 
                 const first =
-                  a.timeTableRows[fromA].liveEstimateTime !== undefined
+                  a.timeTableRows[fromA].liveEstimateTime !== null
                     ? a.timeTableRows[fromA].liveEstimateTime
                     : a.timeTableRows[fromA].scheduledTime
 
                 const second =
-                  b.timeTableRows[fromB].liveEstimateTime !== undefined
+                  b.timeTableRows[fromB].liveEstimateTime !== null
                     ? b.timeTableRows[fromB].liveEstimateTime
                     : b.timeTableRows[fromB].scheduledTime
 
