@@ -18,7 +18,6 @@ class App extends React.Component {
       const from = app.settings.from
       // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
 
-
       let query = `{
         viewer {
           getStationsTrainsUsingGET( where:"[*trainCategory=Commuter]", station: "${from}",include_nonstopping:false, arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:50) {
@@ -54,7 +53,7 @@ class App extends React.Component {
         },
       }).then(result => {
         let trains = result.data.data.viewer.getStationsTrainsUsingGET
-        console.log(trains)
+        // console.log(trains)
         this.setState({ trains })
       })
 

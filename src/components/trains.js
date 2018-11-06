@@ -16,35 +16,44 @@ class Trains extends React.Component {
         <div id="trains">
           {app.trains &&
             app.trains.
+              filter(
+                train =>
+                  train.timeTableRows.findIndex(
+                    row =>
+                      // Saapuu määränpäähän
+                      row.stationShortCode === app.settings.to &&
+                      row.type === `ARRIVAL` &&
+                      row.commercialStop === true
+                  ) !== -1
+              ).
               sort((a, b) => {
-                console.log(a, b)
+                console.log(`sort`)
                 const fromA = a.timeTableRows.findIndex(
                   row =>
                     row.stationShortCode === app.settings.from &&
-                    row.type === `DEPARTURE`
+                    row.type === `DEPARTURE` &&
+                    row.commercialStop === true
                 )
 
                 const fromB = b.timeTableRows.findIndex(
                   row =>
                     row.stationShortCode === app.settings.from &&
-                    row.type === `DEPARTURE`
+                    row.type === `DEPARTURE` &&
+                    row.commercialStop === true
                 )
                 console.log(fromA, fromB)
-                if (fromA && fromB) {
-
-
-                  const first =
-                  a.timeTableRows[fromA].liveEstimateTime
-                    ? a.timeTableRows[fromA].liveEstimateTime
-                    : a.timeTableRows[fromA].scheduledTime
-
-                  const second =
-                  b.timeTableRows[fromB].liveEstimateTime
-                    ? b.timeTableRows[fromB].liveEstimateTime
-                    : b.timeTableRows[fromB].scheduledTime
-
-                  return DateTime.fromISO(first) - DateTime.fromISO(second)
+                if ([ fromA, fromB ].some(num => num === -1)) {
+                  return false
                 }
+                const first = a.timeTableRows[fromA].liveEstimateTime
+                  ? a.timeTableRows[fromA].liveEstimateTime
+                  : a.timeTableRows[fromA].scheduledTime
+
+                const second = b.timeTableRows[fromB].liveEstimateTime
+                  ? b.timeTableRows[fromB].liveEstimateTime
+                  : b.timeTableRows[fromB].scheduledTime
+                console.log(first, second)
+                return DateTime.fromISO(first) - DateTime.fromISO(second)
               }).
               map(train => {
                 if (
