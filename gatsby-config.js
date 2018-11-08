@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Lähtevät junat`,
+    description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
+    url: `https://lahtevat.info`,
+    thumbnail: ``
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

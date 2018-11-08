@@ -14,6 +14,9 @@ const Layout = ({ children }) => (
         site {
           siteMetadata {
             title
+            description
+            url
+            thumbnail
           }
         }
       }
@@ -22,6 +25,23 @@ const Layout = ({ children }) => (
       <div>
         <Helmet title={data.site.siteMetadata.title}>
           <html lang="fi" />
+          <meta name="title" content={data.site.siteMetadata.title} />
+          <meta name="description" content={data.site.siteMetadata.description} />
+          <meta name="og:title" content={data.site.siteMetadata.title} />
+          <meta name="og:url" content={data.site.siteMetadata.url} />
+          <meta name="og:image" content={data.site.siteMetadata.thumbnail && data.site.siteMetadata.thumbnail} />
+          <meta name="og:image:secure_url" content={data.site.siteMetadata.thumbnail && data.site.siteMetadata.thumbnail} />
+          <meta name="og:description" content={data.site.siteMetadata.description} />
+          <meta name="og:image:width" content={1200} />
+          <meta name="og:image:height" content={630} />
+          <meta name="twitter:card" content={`summary_large_image`} />
+          <meta name="twitter:title" content={data.site.siteMetadata.title} />
+          <meta name="twitter:description" content={data.site.siteMetadata.description} />
+          <meta name="twitter:image" content={data.site.siteMetadata.thumbnail && data.site.siteMetadata.thumbnail} />
+          <meta name="robots" content={`index, follow`} />
+          <meta name="twitter:creator" content={`@nikosalonen`} />
+          <meta name="og:site_name" content={`lahtevat.info`} />
+
         </Helmet>
 
 
