@@ -6,6 +6,7 @@ import './hsl.css'
 
 const Header = ({ siteTitle }) => (
   <div
+    // vr #55a700
     style={{
       background: `#8d449b`,
       marginBottom: `1.45rem`,
