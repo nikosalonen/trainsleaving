@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import 'spectre.css'
+import './hsl.css'
 
 const Header = ({ siteTitle }) => (
   <div
     style={{
-      background: `#0078ca`,
+      background: `#8d449b`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -38,9 +39,10 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <span className="train">4</span>{siteTitle}
         </Link>
       </h1>
+
     </div>
   </div>
 )

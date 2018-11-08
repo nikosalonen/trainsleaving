@@ -80,7 +80,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div className="app container">
         <div className="columns">
           <div className="column col-6 col-ml-auto text-right" >
             <Time />
