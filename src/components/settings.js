@@ -11,7 +11,6 @@ class Settings extends React.Component {
     let props = this.props
     let app = this.context
 
-    console.log(app, props)
     return <div />
   }
 }
