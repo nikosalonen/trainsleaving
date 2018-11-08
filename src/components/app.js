@@ -82,7 +82,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="columns">
-          <div className="column col-3 col-ml-auto" style={{ textAlign: `right` }}>
+          <div className="column col-3 col-ml-auto text-right" >
             <Time />
           </div>
           <div className="column col-12">
@@ -96,7 +96,7 @@ class App extends React.Component {
                   </div>
                   <p className="empty-title h5">Haetaan junatietoja 🚂</p>
                   <p className="empty-subtitle">Tähän menee hetki internetyhteytesi nopeudesta riippuen.</p>
-
+                  <div className="loading loading-lg"></div>
                 </div>
               }
             </AppContext.Provider>
