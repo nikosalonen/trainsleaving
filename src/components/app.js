@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import Time from './time'
-const Trains = lazy(() => import(`./trains`))
+import Trains from './trains'
 import Settings from './settings'
 import axios from 'axios'
 import 'spectre.css'
@@ -65,14 +65,6 @@ class App extends React.Component {
         this.setState({ trains })
       })
 
-      // axios.
-      //   get(
-      //     `https://rata.digitraffic.fi/api/v1/live-trains/station/${from}?arrived_trains=0&arriving_trains=0&departed_trains=0&departing_trains=50&include_nonstopping=false`
-      //   ).
-      //   then(res => {
-      //     let trains = res.data
-      //     this.setState({ trains })
-      //   })
     }
   }
 
@@ -87,7 +79,6 @@ class App extends React.Component {
   // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
 
-    const trains = <Trains />
     return (
       <div className="container">
         <div className="columns">
@@ -97,9 +88,7 @@ class App extends React.Component {
           <div className="column col-12">
             <AppContext.Provider value={this.state}>
               <Settings />
-              <Suspense fallback={<div>Ladataana tietoja...</div>}>
-                {trains}
-              </Suspense>
+              <Trains />
             </AppContext.Provider>
           </div>
         </div>
