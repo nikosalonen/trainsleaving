@@ -10,6 +10,8 @@ export const app = {
     includeCommuter: true,
     includeRussia: false,
   },
+  getTrains: () => {},
+  swapStations: () => { console.log(`swapStations`) }
 }
 
 export const AppContext = React.createContext(app)

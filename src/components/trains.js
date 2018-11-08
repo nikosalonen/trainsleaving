@@ -1,5 +1,6 @@
 import React from 'react'
 import Train from './train'
+
 import { DateTime } from 'luxon'
 import { AppContext } from '../context/context'
 
@@ -14,6 +15,13 @@ class Trains extends React.Component {
           🚂 Junat {app.settings.from} ➡️ {app.settings.to}
         </h1>
         <div id="trains">
+          <AppContext.Consumer>
+            {({  swapStations }) => (
+              <button onClick={swapStations}>↔️</button>
+
+            )}
+          </AppContext.Consumer>
+          <div>{app.settings.from} - {app.settings.to}</div>
           {app.trains &&
             app.trains.
               filter(

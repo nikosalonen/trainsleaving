@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import Time from './time'
-import Trains from './trains'
+const Trains = lazy(() => import(`./trains`))
 import Settings from './settings'
 import axios from 'axios'
 
@@ -12,10 +12,17 @@ class App extends React.Component {
     this.state = {
       ...app,
       getTrains: this.getTrains,
+      swapStations: this.swapStations
+    }
+
+    this.swapStations = () => {
+      console.log(this.state.settings.from, this.state.settings.to)
+      const settings = { ...this.state.settings, to: this.state.settings.from, from: this.state.settings.to }
+      this.setState({ settings })
     }
 
     this.getTrains = () => {
-      const from = app.settings.from
+      const from = this.state.settings.from
       // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
 
       let query = `{
@@ -73,17 +80,21 @@ class App extends React.Component {
     this.interval = setInterval(() => this.getTrains(), 1000 * 60)
   }
   componentWillUnmount() {
-    this._mounted = false
+    clearInterval(this.interval)
   }
 
   // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
+
+    const trains = <Trains />
     return (
       <div>
         <Time />
         <AppContext.Provider value={this.state}>
           <Settings />
-          <Trains />
+          <Suspense fallback={<div>Ladataana tietoja...</div>}>
+            {trains}
+          </Suspense>
         </AppContext.Provider>
       </div>
     )
