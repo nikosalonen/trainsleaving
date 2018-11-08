@@ -1,6 +1,7 @@
 import React from 'react'
 import { DateTime } from 'luxon'
 import PropTypes from 'prop-types'
+import 'spectre.css'
 
 const Train = props => {
   const train = props.data
@@ -27,23 +28,26 @@ const Train = props => {
   // console.log(departureFrom)
 
   return (
-    <div>
-      {train.commuterLineID || `${train.trainType} ${train.trainNumber}`}
-      {` `}
-      lähtee
-      {` `}
-      {departureFrom.differenceInMinutes && departureFrom.differenceInMinutes > 1 && departureFrom.liveEstimateTime !== null
-        ? `~ ${DateTime.fromISO(departureFrom.liveEstimateTime).
-          setLocale(`fi-FI`).
-          toLocaleString(DateTime.TIME_24_SIMPLE)}`
-        :
-        ` ${DateTime.fromISO(departureFrom.scheduledTime).
-          setLocale(`fi-FI`).
-          toLocaleString(DateTime.TIME_24_SIMPLE)}`
-      }
-      {` `}
-      raiteelta {departureFrom.commercialTrack}
-    </div>
+    <tr>
+      <td>
+        {train.commuterLineID || `${train.trainType} ${train.trainNumber}`}
+      </td>
+      <td>
+        {departureFrom.differenceInMinutes && departureFrom.differenceInMinutes > 1 && departureFrom.liveEstimateTime !== null
+          ? `~ ${DateTime.fromISO(departureFrom.liveEstimateTime).
+            setLocale(`fi-FI`).
+            toLocaleString(DateTime.TIME_24_SIMPLE)}`
+          :
+          ` ${DateTime.fromISO(departureFrom.scheduledTime).
+            setLocale(`fi-FI`).
+            toLocaleString(DateTime.TIME_24_SIMPLE)}`
+        }
+      </td>
+      <td>
+        {departureFrom.commercialTrack}
+      </td>
+
+    </tr>
   )
 }
 

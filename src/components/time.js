@@ -1,5 +1,6 @@
 import React from 'react'
 import { DateTime } from 'luxon'
+import 'spectre.css'
 
 class Time extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Time extends React.Component {
   }
 
   render() {
-    return <div>Kello on {this.state.time}</div>
+    return <samp >{this.state.time}</samp>
   }
 }
 export default Time

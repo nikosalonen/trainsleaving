@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import 'spectre.css'
 
 const Header = ({ siteTitle }) => (
   <div

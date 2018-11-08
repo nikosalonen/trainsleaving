@@ -3,6 +3,7 @@ import Train from './train'
 
 import { DateTime } from 'luxon'
 import { AppContext } from '../context/context'
+import 'spectre.css'
 
 class Trains extends React.Component {
   render() {
@@ -16,13 +17,25 @@ class Trains extends React.Component {
         </h1>
         <div id="trains">
           <AppContext.Consumer>
-            {({  swapStations }) => (
-              <button onClick={swapStations}>↔️</button>
+            {({ swapStations }) => (
+
+              <button className="btn" onClick={swapStations}>Vaihda suunta</button>
 
             )}
           </AppContext.Consumer>
           <div>{app.settings.from} - {app.settings.to}</div>
-          {app.trains &&
+          <table className="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Juna</th>
+                <th>Aika</th>
+                <th>Raide</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              {app.trains &&
             app.trains.
               filter(
                 train =>
@@ -80,6 +93,9 @@ class Trains extends React.Component {
                   />
                 )
               })}
+            </tbody>
+          </table>
+
         </div>
       </div>
     )

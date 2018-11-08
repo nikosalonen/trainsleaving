@@ -3,6 +3,7 @@ import Time from './time'
 const Trains = lazy(() => import(`./trains`))
 import Settings from './settings'
 import axios from 'axios'
+import 'spectre.css'
 
 import { AppContext, app } from '../context/context'
 
@@ -88,14 +89,21 @@ class App extends React.Component {
 
     const trains = <Trains />
     return (
-      <div>
-        <Time />
-        <AppContext.Provider value={this.state}>
-          <Settings />
-          <Suspense fallback={<div>Ladataana tietoja...</div>}>
-            {trains}
-          </Suspense>
-        </AppContext.Provider>
+      <div className="container">
+        <div className="columns">
+          <div className="column col-3 col-ml-auto" style={{ textAlign: `right` }}>
+            <Time />
+          </div>
+          <div className="column col-12">
+            <AppContext.Provider value={this.state}>
+              <Settings />
+              <Suspense fallback={<div>Ladataana tietoja...</div>}>
+                {trains}
+              </Suspense>
+            </AppContext.Provider>
+          </div>
+        </div>
+
       </div>
     )
   }
