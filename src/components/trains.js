@@ -4,6 +4,7 @@ import Train from './train'
 import { DateTime } from 'luxon'
 import { AppContext } from '../context/context'
 import 'spectre.css'
+import './hsl.css'
 
 class Trains extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class Trains extends React.Component {
     return (
       <div>
         <h2>
-          {app.settings.from} ➡️ {app.settings.to}
+          {app.settings.from} <span className="hslnormal">D</span> {app.settings.to}
         </h2>
         <div id="trains">
           <AppContext.Consumer>

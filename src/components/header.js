@@ -39,7 +39,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          <span className="train">4</span>{siteTitle}
+          <span className="hsl white">4</span>{siteTitle}
         </Link>
       </h1>
 

@@ -40,6 +40,6 @@
     font-style: normal;
 
 }
-
-.train { font-family: 'HSL', Arial, sans-serif; color:#FFF; }
-.app {font-family: 'gotham', Arial, sans-serif;}
+.hslnormal{font-family: 'hsl-piktonormal', Arial,sans-serif;}
+.hsl { font-family: 'HSL', Arial, sans-serif; }
+.app {font-family: 'gotham', Arial, sans-serif!important;}
