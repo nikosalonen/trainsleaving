@@ -88,7 +88,17 @@ class App extends React.Component {
           <div className="column col-12">
             <AppContext.Provider value={this.state}>
               <Settings />
-              <Trains />
+              {this.state.trains.length ?
+                <Trains /> :
+                <div className="empty">
+                  <div className="empty-icon">
+                    <i className="icon icon-people"></i>
+                  </div>
+                  <p className="empty-title h5">Haetaan junatietoja 🚂</p>
+                  <p className="empty-subtitle">Tähän menee hetki internetyhteytesi nopeudesta riippuen.</p>
+
+                </div>
+              }
             </AppContext.Provider>
           </div>
         </div>

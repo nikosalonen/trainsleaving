@@ -12,9 +12,9 @@ class Trains extends React.Component {
 
     return (
       <div>
-        <h1>
-          🚂 Junat {app.settings.from} ➡️ {app.settings.to}
-        </h1>
+        <h2>
+          {app.settings.from} ➡️ {app.settings.to}
+        </h2>
         <div id="trains">
           <AppContext.Consumer>
             {({ swapStations }) => (
