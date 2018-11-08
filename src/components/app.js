@@ -82,7 +82,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="columns">
-          <div className="column col-3 col-ml-auto text-right" >
+          <div className="column col-6 col-ml-auto text-right" >
             <Time />
           </div>
           <div className="column col-12">
