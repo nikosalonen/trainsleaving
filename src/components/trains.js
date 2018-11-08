@@ -2,105 +2,104 @@ import React from 'react'
 import Train from './train'
 
 import { DateTime } from 'luxon'
-import { AppContext } from '../context/context'
+import { AppConsumer } from '../context/context'
 import 'spectre.css'
 import './hsl.css'
 
-class Trains extends React.Component {
-  render() {
-    // let props = this.props
-    let app = this.context
-
-    return (
-      <div>
-        <h2>
-          {app.settings.from} <span className="hslnormal">D</span> {app.settings.to}
-        </h2>
-        <div id="trains">
-          <AppContext.Consumer>
-            {({ swapStations }) => (
-
-              <button className="btn" onClick={swapStations}>Vaihda suunta</button>
-
-            )}
-          </AppContext.Consumer>
-          <div>{app.settings.from} - {app.settings.to}</div>
-          <table className="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th>Juna</th>
-                <th>Aika</th>
-                <th>Raide</th>
-              </tr>
-            </thead>
-            <tbody>
+const Trains = () => {
 
 
-              {app.trains &&
-            app.trains.
-              filter(
-                train =>
-                  train.timeTableRows.findIndex(
-                    row =>
-                      // Saapuu määränpäähän
-                      row.stationShortCode === app.settings.to &&
-                      row.type === `ARRIVAL` &&
-                      row.commercialStop === true
-                  ) !== -1
-              ).
-              sort((a, b) => {
-                const fromA = a.timeTableRows.findIndex(
-                  row =>
-                    row.stationShortCode === app.settings.from &&
-                    row.type === `DEPARTURE` &&
-                    row.commercialStop === true
-                )
+  return (
+    <div>
+      <AppConsumer>
+        {(app) => (
 
-                const fromB = b.timeTableRows.findIndex(
-                  row =>
-                    row.stationShortCode === app.settings.from &&
-                    row.type === `DEPARTURE` &&
-                    row.commercialStop === true
-                )
+          <div>
 
-                if ([ fromA, fromB ].some(num => num === -1)) {
-                  return false
-                }
-                const first = a.timeTableRows[fromA].liveEstimateTime
-                  ? a.timeTableRows[fromA].liveEstimateTime
-                  : a.timeTableRows[fromA].scheduledTime
+            <h2>
+              {app.trainSettings.from} <span className="hslnormal">D</span>{` `}
+              {app.trainSettings.to}
+            </h2>
+            <div id="trains">
+              <button className="btn" onClick={app.swapStations}>
+              Vaihda suunta
+              </button>
+              <div>
+                <table className="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Juna</th>
+                      <th>Aika</th>
+                      <th>Raide</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {app.trains &&
+                    app.trains.
+                      filter(
+                        train =>
+                          train.timeTableRows.findIndex(
+                            row =>
+                              // Saapuu määränpäähän
+                              row.stationShortCode === app.trainSettings.to &&
+                              row.type === `ARRIVAL` &&
+                              row.commercialStop === true
+                          ) !== -1
+                      ).
+                      sort((a, b) => {
+                        const fromA = a.timeTableRows.findIndex(
+                          row =>
+                            row.stationShortCode === app.trainSettings.from &&
+                            row.type === `DEPARTURE` &&
+                            row.commercialStop === true
+                        )
 
-                const second = b.timeTableRows[fromB].liveEstimateTime
-                  ? b.timeTableRows[fromB].liveEstimateTime
-                  : b.timeTableRows[fromB].scheduledTime
+                        const fromB = b.timeTableRows.findIndex(
+                          row =>
+                            row.stationShortCode === app.trainSettings.from &&
+                            row.type === `DEPARTURE` &&
+                            row.commercialStop === true
+                        )
 
-                return DateTime.fromISO(first) - DateTime.fromISO(second)
-              }).
-              map(train => {
-                if (
-                  (!app.settings.includeRussia && train.trainType === `AE`) ||
-                  (!app.settings.includeLongDistance &&
-                    train.trainCategory === `Long-distance`) ||
-                  (!app.settings.includeCommuter &&
-                    train.trainCategory === `Commuter`)
-                ) {
-                  return false
-                }
-                return (
-                  <Train
-                    key={train.trainNumber}
-                    data={train}
-                    settings={app.settings}
-                  />
-                )
-              })}
-            </tbody>
-          </table>
+                        if ([ fromA, fromB ].some(num => num === -1)) {
+                          return false
+                        }
+                        const first = a.timeTableRows[fromA].liveEstimateTime
+                          ? a.timeTableRows[fromA].liveEstimateTime
+                          : a.timeTableRows[fromA].scheduledTime
 
-        </div>
-      </div>
-    )
-  }
+                        const second = b.timeTableRows[fromB].liveEstimateTime
+                          ? b.timeTableRows[fromB].liveEstimateTime
+                          : b.timeTableRows[fromB].scheduledTime
+
+                        return (
+                          DateTime.fromISO(first) - DateTime.fromISO(second)
+                        )
+                      }).
+                      map(train => {
+                        if (
+                          (!app.trainSettings.includeRussia &&
+                            train.trainType === `AE`)
+                        ) {
+                          return false
+                        }
+                        return (
+                          <Train
+                            key={train.trainNumber}
+                            data={train}
+                            settings={app.trainSettings}
+                          />
+                        )
+                      })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+      </AppConsumer>
+    </div>
+  )
 }
-Trains.contextType = AppContext
+
 export default Trains

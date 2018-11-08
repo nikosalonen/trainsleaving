@@ -2,7 +2,7 @@ import React from 'react'
 
 export const app = {
   trains: [],
-  settings: {
+  trainSettings: {
     from: `HKI`,
     to: `TKL`,
     showCancelled: true,
@@ -11,7 +11,10 @@ export const app = {
     includeRussia: false,
   },
   getTrains: () => {},
-  swapStations: () => { console.log(`swapStations`) }
+  swapStations: () => {  },
+  toggleSetting: () => {  }
 }
 
 export const AppContext = React.createContext(app)
+export const AppProvider = AppContext.Provider
+export const AppConsumer = AppContext.Consumer
