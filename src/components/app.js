@@ -13,26 +13,129 @@ class App extends React.Component {
     super(props)
 
 
-    this.swapStations = () => {
+    this.getSuggestions = value => {
+      const inputValue = value.trim().toLowerCase()
+      const inputLength = inputValue.length
 
-      this.setState({ trainSettings: { ...this.state.trainSettings, to:this.state.trainSettings.from, from: this.state.trainSettings.to } })
-
+      return inputLength === 0
+        ? []
+        : this.state.stations.filter(
+          station =>
+            station.stationName.toLowerCase().slice(0, inputLength) ===
+              inputValue
+        )
     }
 
-    this.toggleSetting = (e) => {
+    // When suggestion is clicked, Autosuggest needs to populate the input
+    // based on the clicked suggestion. Teach Autosuggest how to calculate the
+    // input value for every given suggestion.
+    this.getSuggestionValue = suggestion => {
 
+      console.log(suggestion)
+      return suggestion.stationName
+    }
+
+    // Use your imagination to render suggestions.
+    this.renderSuggestion = suggestion => <span>{suggestion.stationName}</span>
+
+    // Autosuggest will call this function every time you need to update suggestions.
+    // You already implemented this logic above, so just use it.
+    this.onSuggestionsFetchRequested = ({ value }) => {
+      this.setState({
+        suggestions: this.getSuggestions(value),
+      })
+    }
+
+    // Autosuggest will call this function every time you need to clear suggestions.
+    this.onSuggestionsClearRequested = () => {
+      this.setState({
+        suggestions: [],
+      })
+    }
+    this.onSuggestionSelected = (
+      event,
+      { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
+    ) => {
+      console.log(
+        `onSuggestionSelected`,
+        suggestion,
+        suggestionValue,
+        suggestionIndex,
+        sectionIndex,
+        method
+      )
+      let station = {}
+      if (suggestion !== this.state.trainSettings[event.target.name]) {
+        station = this.state.stations.filter(
+          station => suggestion === station.stationName
+        )
+      }
+      this.setState({
+        trainSettings: {
+          ...this.state.trainSettings,
+
+          [event.target.name]: station.length
+            ? station[0]
+            : {
+              ...this.state.trainSettings[event.target.name],
+              stationName: suggestion,
+            },
+        },
+      })
+    }
+    this.autocompleteOnChange = (id, newValue) => {
+
+
+      let station = {}
+      if (newValue !== this.state.trainSettings[id]) {
+        station = this.state.stations.filter(
+          station => newValue === station.stationName
+        )
+      }
+      console.log(station)
+      this.setState({
+        trainSettings: {
+          ...this.state.trainSettings,
+
+          [id]: station.length
+            ? station[0]
+            : {
+              ...this.state.trainSettings[id],
+              stationName: newValue,
+            },
+        },
+      })
+    }
+
+    this.autocompleteOnBlur = (event, { highlightedSuggestion }) => {
+      console.log(highlightedSuggestion)
+    }
+
+    this.swapStations = () => {
+      this.setState({
+        trainSettings: {
+          ...this.state.trainSettings,
+          to: this.state.trainSettings.from,
+          from: this.state.trainSettings.to,
+        },
+      })
+    }
+
+    this.toggleSetting = e => {
       const target = e.target
       const value = target.type === `checkbox` ? target.checked : target.value
       const name = target.name
 
       let update = { [name]: value }
 
-      const other = name === `includeCommuter` ? `includeLongDistance` : `includeCommuter`
+      const other =
+        name === `includeCommuter` ? `includeLongDistance` : `includeCommuter`
       if (value === false && this.state.trainSettings[other] === false) {
-        update = { ...update, [other]:true }
+        update = { ...update, [other]: true }
       }
-      this.setState({ trainSettings: { ...this.state.trainSettings, ...update } })
-
+      this.setState({
+        trainSettings: { ...this.state.trainSettings, ...update },
+      })
     }
 
     this.reInit = (erase = false) => {
@@ -41,18 +144,16 @@ class App extends React.Component {
       erase && this.setState({ trains: [] })
       this.getTrains()
       this.interval = setInterval(() => this.getTrains(), 1000 * 60)
-
     }
 
     this.getStations = () => {
-      let  query = `{
+      let query = `{
         viewer {
           getStationsUsingGET(where:"[*passengerTraffic:true"){
             stationShortCode
             stationName
             latitude
             longitude
-            type
           }
         }
       }`
@@ -67,27 +168,30 @@ class App extends React.Component {
           query: query,
         },
       }).then(result => {
-        let stations = result.data.data.viewer.getStationsTrainsUsingGET
+        let stations = result.data.data.viewer.getStationsUsingGET
         this.setState({ stations })
       })
-
-
     }
     this.getTrains = () => {
-      const from = this.state.trainSettings.from
-      // // https://rata.digitraffic.fi/api/v1/graphql/graphiql?
+      const from = this.state.trainSettings.from.stationShortCode
       let where = ``
-      if (this.state.trainSettings.includeCommuter && !this.state.trainSettings.includeLongDistance) {
+      if (
+        this.state.trainSettings.includeCommuter &&
+        !this.state.trainSettings.includeLongDistance
+      ) {
         where = `where:"[*trainCategory=Commuter]"`
       }
-      else if (!this.state.trainSettings.includeCommuter && this.state.trainSettings.includeLongDistance) {
+      else if (
+        !this.state.trainSettings.includeCommuter &&
+        this.state.trainSettings.includeLongDistance
+      ) {
         where = `where:"[*trainCategory=Long-distance]"`
-
       }
 
       let query = `{
         viewer {
-          getStationsTrainsUsingGET( ${where}, station: "${from}",include_nonstopping:false, arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:50) {
+          getStationsTrainsUsingGET( ${where}, station: "${from}",include_nonstopping:false, arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:150) {
+            operatorUICCode
             trainCategory
             trainType
             cancelled
@@ -122,46 +226,67 @@ class App extends React.Component {
         let trains = result.data.data.viewer.getStationsTrainsUsingGET
         this.setState({ trains })
       })
-
     }
 
     this.state = {
       trains: [],
-      stations:[],
+      stations: [],
+      suggestions: [],
       trainSettings: {
-        from: `HKI`,
-        to: `TKL`,
+        showSettings: true,
+        from: {
+          stationShortCode: `HKI`,
+          stationName: `Helsinki asema`,
+          latitude: 60.172097,
+          longitude: 24.941249,
+        },
+        to: {
+          stationShortCode: `TKL`,
+          stationName: `Tikkurila asema`,
+          latitude: 60.292166,
+          longitude: 25.044055,
+        },
         showCancelled: true,
         includeLongDistance: false,
         includeCommuter: true,
         includeRussia: false,
       },
       getTrains: this.getTrains,
+      getStations: this.getStations,
       swapStations: this.swapStations,
-      toggleSetting: this.toggleSetting
+      toggleSetting: this.toggleSetting,
+      getSuggestions: this.getSuggestions,
+      getSuggestionValue: this.getSuggestionValue,
+      renderSuggestion: this.renderSuggestion,
+      onSuggestionsFetchRequested: this.onSuggestionsFetchRequested,
+      onSuggestionsClearRequested: this.onSuggestionsClearRequested,
+      autocompleteOnChange: this.autocompleteOnChange,
+      autocompleteOnBlur: this.autocompleteOnBlur,
     }
-
-
   }
   componentDidMount() {
-
     this.getTrains()
     this.getStations()
     this.interval = setInterval(() => this.getTrains(), 1000 * 60)
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.trainSettings.from !== this.state.trainSettings.from ||
-      prevState.trainSettings.includeCommuter !== this.state.trainSettings.includeCommuter ||
-      prevState.trainSettings.includeLongDistance !== this.state.trainSettings.includeLongDistance ) {
-
+    if (
+      prevState.trainSettings.from.stationShortCode !==
+        this.state.trainSettings.from.stationShortCode ||
+      prevState.trainSettings.to.stationShortCode !==
+        this.state.trainSettings.to.stationShortCode ||
+      prevState.trainSettings.includeCommuter !==
+        this.state.trainSettings.includeCommuter ||
+      prevState.trainSettings.includeLongDistance !==
+        this.state.trainSettings.includeLongDistance
+    ) {
+      console.log(`new interval`)
 
       clearInterval(this.interval)
-
       this.getTrains()
       this.interval = setInterval(() => this.getTrains(), 1000 * 60)
     }
-
   }
   componentWillUnmount() {
     clearInterval(this.interval)
@@ -169,31 +294,33 @@ class App extends React.Component {
 
   // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
-
     return (
       <div className="app container">
         <div className="columns">
-          <div className="column col-6 col-ml-auto text-right" >
+          <div className="column col-6 col-ml-auto text-right">
             <Time />
           </div>
           <div className="column col-12">
             <AppProvider value={this.state}>
               <Settings />
-              {this.state.trains.length ?
-                <Trains /> :
+
+              {this.state.trains ? (
+                <Trains />
+              ) : (
                 <div className="empty">
                   <div className="empty-icon">
-                    <i className="icon icon-people"></i>
+                    <i className="icon icon-people" />
                   </div>
                   <p className="empty-title h5">Haetaan junatietoja 🚂</p>
-                  <p className="empty-subtitle">Tähän menee hetki internetyhteytesi nopeudesta riippuen.</p>
-                  <div className="loading loading-lg"></div>
+                  <p className="empty-subtitle">
+                    Tähän menee hetki internetyhteytesi nopeudesta riippuen.
+                  </p>
+                  <div className="loading loading-lg" />
                 </div>
-              }
+              )}
             </AppProvider>
           </div>
         </div>
-
       </div>
     )
   }

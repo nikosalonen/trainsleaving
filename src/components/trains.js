@@ -17,8 +17,8 @@ const Trains = () => {
           <div>
 
             <h2>
-              {app.trainSettings.from} <span className="hslnormal">D</span>{` `}
-              {app.trainSettings.to}
+              {app.trainSettings.from.stationName} <span className="hslnormal">D</span>{` `}
+              {app.trainSettings.to.stationName}
             </h2>
             <div id="trains">
               <button className="btn" onClick={app.swapStations}>
@@ -41,7 +41,7 @@ const Trains = () => {
                           train.timeTableRows.findIndex(
                             row =>
                               // Saapuu määränpäähän
-                              row.stationShortCode === app.trainSettings.to &&
+                              row.stationShortCode === app.trainSettings.to.stationShortCode &&
                               row.type === `ARRIVAL` &&
                               row.commercialStop === true
                           ) !== -1
@@ -49,14 +49,14 @@ const Trains = () => {
                       sort((a, b) => {
                         const fromA = a.timeTableRows.findIndex(
                           row =>
-                            row.stationShortCode === app.trainSettings.from &&
+                            row.stationShortCode === app.trainSettings.from.stationShortCode &&
                             row.type === `DEPARTURE` &&
                             row.commercialStop === true
                         )
 
                         const fromB = b.timeTableRows.findIndex(
                           row =>
-                            row.stationShortCode === app.trainSettings.from &&
+                            row.stationShortCode === app.trainSettings.from.stationShortCode &&
                             row.type === `DEPARTURE` &&
                             row.commercialStop === true
                         )
@@ -85,7 +85,7 @@ const Trains = () => {
                         }
                         return (
                           <Train
-                            key={train.trainNumber}
+                            key={train.trainNumber + train.operatorUICCode + Math.random()}
                             data={train}
                             settings={app.trainSettings}
                           />
