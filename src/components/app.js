@@ -4,6 +4,7 @@ import Trains from './trains'
 import Settings from './settings'
 import axios from 'axios'
 import 'spectre.css'
+import './layout.css'
 
 import { AppProvider } from '../context/context'
 
@@ -40,6 +41,36 @@ class App extends React.Component {
       erase && this.setState({ trains: [] })
       this.getTrains()
       this.interval = setInterval(() => this.getTrains(), 1000 * 60)
+
+    }
+
+    this.getStations = () => {
+      let  query = `{
+        viewer {
+          getStationsUsingGET(where:"[*passengerTraffic:true"){
+            stationShortCode
+            stationName
+            latitude
+            longitude
+            type
+          }
+        }
+      }`
+
+      axios({
+        url: `https://rata.digitraffic.fi/api/v1/graphql/graphiql?`,
+        method: `post`,
+        headers: {
+          'Content-Type': `application/json`,
+        },
+        data: {
+          query: query,
+        },
+      }).then(result => {
+        let stations = result.data.data.viewer.getStationsTrainsUsingGET
+        this.setState({ stations })
+      })
+
 
     }
     this.getTrains = () => {
@@ -96,6 +127,7 @@ class App extends React.Component {
 
     this.state = {
       trains: [],
+      stations:[],
       trainSettings: {
         from: `HKI`,
         to: `TKL`,
@@ -114,6 +146,7 @@ class App extends React.Component {
   componentDidMount() {
 
     this.getTrains()
+    this.getStations()
     this.interval = setInterval(() => this.getTrains(), 1000 * 60)
   }
 
