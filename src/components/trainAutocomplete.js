@@ -22,7 +22,6 @@ class TrainAutosuggest extends React.Component {
         {({ suggestions,
           onSuggestionsFetchRequested,
           onSuggestionsClearRequested,
-          autocompleteOnChange,
           trainSettings,
           getSuggestionValue,
           renderSuggestion

@@ -17,8 +17,8 @@ const Trains = () => {
           <div>
 
             <h2>
-              {app.trainSettings.from.stationName} <span className="hslnormal">D</span>{` `}
-              {app.trainSettings.to.stationName}
+              {app.trainSettings.from.stationName.replace(/ asema/, ``)} <span className="hslnormal">D</span>{` `}
+              {app.trainSettings.to.stationName.replace(/ asema/, ``)}
             </h2>
             <div id="trains">
               <button className="btn" onClick={app.swapStations}>

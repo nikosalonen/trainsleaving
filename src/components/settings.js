@@ -26,7 +26,7 @@ const Settings = () => {
                 )}
               </div>
 
-              <div className="column col-6">
+              <div className="column col-6 col-sm-12">
                 <div className="form-group">
                   <label className="form-switch">
                     <input
@@ -50,7 +50,7 @@ const Settings = () => {
                   </label>
                 </div>
               </div>
-              <div className="column col-6">
+              <div className="column col-6 col-sm-12">
                 <div className="form-group">
                   <label className="form-label" htmlFor="from">
                     Mistä:
