@@ -17,8 +17,8 @@ const Trains = () => {
           <div>
 
             <h2>
-              {app.trainSettings.from.stationName.replace(/ asema/, ``)} <span className="hslnormal">D</span>{` `}
-              {app.trainSettings.to.stationName.replace(/ asema/, ``)}
+              {app.trainSettings.from.stationName} <span className="hslnormal">D</span>{` `}
+              {app.trainSettings.to.stationName}
             </h2>
             <div id="trains">
               <button className="btn" onClick={app.swapStations}>
@@ -85,7 +85,7 @@ const Trains = () => {
                         }
                         return (
                           <Train
-                            key={train.trainNumber + train.operatorUICCode + Math.random()}
+                            key={train.trainNumber + train.operatorUICCode}
                             data={train}
                             settings={app.trainSettings}
                           />

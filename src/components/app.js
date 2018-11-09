@@ -12,7 +12,6 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-
     this.getSuggestions = value => {
       const inputValue = value.trim().toLowerCase()
       const inputLength = inputValue.length
@@ -30,8 +29,7 @@ class App extends React.Component {
     // based on the clicked suggestion. Teach Autosuggest how to calculate the
     // input value for every given suggestion.
     this.getSuggestionValue = suggestion => {
-
-      console.log(suggestion)
+      // console.log(suggestion)
       return suggestion.stationName
     }
 
@@ -84,8 +82,6 @@ class App extends React.Component {
       })
     }
     this.autocompleteOnChange = (id, newValue) => {
-
-
       let station = {}
       if (newValue !== this.state.trainSettings[id]) {
         station = this.state.stations.filter(
@@ -168,7 +164,15 @@ class App extends React.Component {
           query: query,
         },
       }).then(result => {
-        let stations = result.data.data.viewer.getStationsUsingGET
+        let stations = result.data.data.viewer.getStationsUsingGET.map(
+          station => {
+            return {
+              ...station,
+              stationName: station.stationName.replace(/ [Aa]sema/, ``),
+            }
+          }
+        )
+        // console.log(stations)
         this.setState({ stations })
       })
     }
@@ -236,13 +240,13 @@ class App extends React.Component {
         showSettings: true,
         from: {
           stationShortCode: `HKI`,
-          stationName: `Helsinki asema`,
+          stationName: `Helsinki`,
           latitude: 60.172097,
           longitude: 24.941249,
         },
         to: {
           stationShortCode: `TKL`,
-          stationName: `Tikkurila asema`,
+          stationName: `Tikkurila`,
           latitude: 60.292166,
           longitude: 25.044055,
         },
