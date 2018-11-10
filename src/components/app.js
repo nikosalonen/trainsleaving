@@ -282,7 +282,7 @@ class App extends React.Component {
           latitude: 60.292166,
           longitude: 25.044055,
         },
-        showCancelled: true,
+        showCancelled: false,
         includeLongDistance: false,
         includeCommuter: true,
         includeRussia: false,

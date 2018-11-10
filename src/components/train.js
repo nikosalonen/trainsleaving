@@ -32,8 +32,11 @@ const Train = props => {
       station.stationShortCode === props.settings.from.stationShortCode &&
       station.type === `DEPARTURE`
   )[0]
-  const cancelled = departureFrom.cancelled
-  console.log(departureFrom)
+  if (departureFrom.cancelled && !settings.showCancelled) {
+    return false
+  }
+  const cancelled = departureFrom.cancelled && settings.showCancelled
+
   return (
     <tr className={cancelled ? `cancelled` : ``}>
       <td>

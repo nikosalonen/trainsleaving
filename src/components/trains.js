@@ -13,7 +13,8 @@ const Trains = () => {
         {app => (
           <div>
             <h2>
-              {app.trainSettings.from.stationName}{` `}
+              {app.trainSettings.from.stationName}
+              {` `}
               <span className="hslnormal">D</span>
               {` `}
               {app.trainSettings.to.stationName}
@@ -68,8 +69,9 @@ const Trains = () => {
                         }).
                         map(train => {
                           if (
-                            !app.trainSettings.includeRussia &&
-                            train.trainType === `AE`
+                            (!app.trainSettings.includeRussia &&
+                              train.trainType === `AE`) ||
+                            train.trainType === `PYO`
                           ) {
                             return false
                           }

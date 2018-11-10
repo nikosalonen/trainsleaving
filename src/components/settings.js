@@ -19,7 +19,8 @@ const Settings = () => {
             {/* {JSON.stringify(suggestions)} */}
             <div className="columns">
               <div className="column col-12 col-ml-auto text-right">
-                Asetukset{` `}
+                Asetukset
+                {` `}
                 <button
                   className="btn c-hand "
                   onClick={hideSettins}
@@ -60,6 +61,17 @@ const Settings = () => {
                             onChange={toggleSetting}
                           />
                           <i className="form-icon" /> Näytä kaukojunat
+                        </label>
+                      </div>
+                      <div className="form-group">
+                        <label className="form-switch">
+                          <input
+                            type="checkbox"
+                            name="showCancelled"
+                            checked={trainSettings.showCancelled}
+                            onChange={toggleSetting}
+                          />
+                          <i className="form-icon" /> Näytä peruutetut
                         </label>
                       </div>
                     </div>
