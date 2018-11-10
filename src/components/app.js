@@ -54,14 +54,6 @@ class App extends React.Component {
       event,
       { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
     ) => {
-      console.log(
-        `onSuggestionSelected`,
-        suggestion,
-        suggestionValue,
-        suggestionIndex,
-        sectionIndex,
-        method
-      )
       let station = {}
       if (suggestion !== this.state.trainSettings[event.target.name]) {
         station = this.state.stations.filter(
@@ -88,7 +80,7 @@ class App extends React.Component {
           station => newValue === station.stationName
         )
       }
-      console.log(station)
+
       this.setState({
         trainSettings: {
           ...this.state.trainSettings,
@@ -103,10 +95,6 @@ class App extends React.Component {
       })
     }
 
-    this.autocompleteOnBlur = (event, { highlightedSuggestion }) => {
-      console.log(highlightedSuggestion)
-    }
-
     this.swapStations = () => {
       this.setState({
         trainSettings: {
@@ -119,10 +107,10 @@ class App extends React.Component {
 
     this.hideSettins = () => {
       this.setState({
-        trainSettings:{
+        trainSettings: {
           ...this.state.trainSettings,
-          showSettings: !this.state.trainSettings.showSettings
-        }
+          showSettings: !this.state.trainSettings.showSettings,
+        },
       })
     }
 
@@ -203,7 +191,7 @@ class App extends React.Component {
 
       let query = `{
         viewer {
-          getStationsTrainsUsingGET( ${where}, station: "${from}",include_nonstopping:false, arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:150) {
+          getStationsTrainsUsingGET( ${where}, station: "${from}", arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:200) {
             operatorUICCode
             trainCategory
             trainType
@@ -236,7 +224,42 @@ class App extends React.Component {
           query: query,
         },
       }).then(result => {
-        let trains = result.data.data.viewer.getStationsTrainsUsingGET
+        let trains = result.data.data.viewer.getStationsTrainsUsingGET.
+          map(train => {
+            return {
+              ...train,
+              timeTableRows: train.timeTableRows.filter(
+                row =>
+                  row.stationShortCode ===
+                    this.state.trainSettings.to.stationShortCode ||
+                  row.stationShortCode ===
+                    this.state.trainSettings.from.stationShortCode
+              ),
+            }
+          }).
+          filter(train => {
+            const stations = train.timeTableRows
+            const willArrive =
+              stations.findIndex(
+                row =>
+                  // Saapuu määränpäähän
+                  row.stationShortCode ===
+                    this.state.trainSettings.to.stationShortCode &&
+                  row.type === `ARRIVAL` &&
+                  row.commercialStop === true
+              ) !== -1
+            const willDeparture =
+              stations.findIndex(
+                row =>
+                  // Lähtee määränpäästä
+                  row.stationShortCode ===
+                    this.state.trainSettings.from.stationShortCode &&
+                  row.type === `DEPARTURE` &&
+                  row.commercialStop === true
+              ) !== -1
+            return willArrive && willDeparture
+          })
+
         this.setState({ trains })
       })
     }
@@ -295,8 +318,6 @@ class App extends React.Component {
       prevState.trainSettings.includeLongDistance !==
         this.state.trainSettings.includeLongDistance
     ) {
-      console.log(`new interval`)
-
       clearInterval(this.interval)
       this.getTrains()
       this.interval = setInterval(() => this.getTrains(), 1000 * 60)
