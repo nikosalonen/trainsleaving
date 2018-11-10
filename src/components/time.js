@@ -29,7 +29,7 @@ class Time extends React.Component {
   }
 
   render() {
-    return <samp >{this.state.time}</samp>
+    return <p>{this.state.time}</p>
   }
 }
 export default Time

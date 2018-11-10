@@ -23,6 +23,7 @@ export const app = {
   getTrains: () => {},
   swapStations: () => {},
   toggleSetting: () => {},
+  hideSettins: () => {},
   getSuggestionValue: () => {},
   renderSuggestion: () => {},
   onSuggestionsFetchRequested: () => {},

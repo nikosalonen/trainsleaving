@@ -117,6 +117,15 @@ class App extends React.Component {
       })
     }
 
+    this.hideSettins = () => {
+      this.setState({
+        trainSettings:{
+          ...this.state.trainSettings,
+          showSettings: !this.state.trainSettings.showSettings
+        }
+      })
+    }
+
     this.toggleSetting = e => {
       const target = e.target
       const value = target.type === `checkbox` ? target.checked : target.value
@@ -237,7 +246,7 @@ class App extends React.Component {
       stations: [],
       suggestions: [],
       trainSettings: {
-        showSettings: true,
+        showSettings: false,
         from: {
           stationShortCode: `HKI`,
           stationName: `Helsinki`,
@@ -259,6 +268,7 @@ class App extends React.Component {
       getStations: this.getStations,
       swapStations: this.swapStations,
       toggleSetting: this.toggleSetting,
+      hideSettins: this.hideSettins,
       getSuggestions: this.getSuggestions,
       getSuggestionValue: this.getSuggestionValue,
       renderSuggestion: this.renderSuggestion,
