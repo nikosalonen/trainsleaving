@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
+import Ad from './ad'
 
 import 'spectre.css'
 
@@ -68,9 +69,18 @@ const Layout = ({ children }) => (
           <meta name="robots" content={`index, follow`} />
           <meta name="twitter:creator" content={`@nikosalonen`} />
           <meta name="og:site_name" content={`lahtevat.info`} />
+          <script
+            async
+            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          />
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
+        <Ad
+          google_ad_client="ca-pub-7292810486004926"
+          enable_page_level_ads={true}
+        />
+
         <div
           style={{
             margin: `0 auto`,
