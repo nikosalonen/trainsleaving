@@ -3,7 +3,7 @@ module.exports = {
     title: `Lähtevät junat`,
     description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
     url: `https://lahtevat.info`,
-    thumbnail: ``
+    thumbnail: ``,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,7 +36,7 @@ module.exports = {
         background_color: `#8d449b`,
         theme_color: `#8d449b`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
@@ -47,7 +47,7 @@ module.exports = {
         // Puts tracking script in the head instead of the body
         head: true,
         // Setting this parameter is optional
-        anonymize: false,
+        anonymize: true,
         // Setting this parameter is also optional
         respectDNT: true,
         cookieDomain: `lahtevat.info`,
