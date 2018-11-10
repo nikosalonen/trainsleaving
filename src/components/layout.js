@@ -73,13 +73,16 @@ const Layout = ({ children }) => (
             async
             src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
+          <script>
+            {`
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0748442567853482",
+          enable_page_level_ads: true
+     });`}
+          </script>
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
-        <Ad
-          google_ad_client="ca-pub-7292810486004926"
-          enable_page_level_ads={true}
-        />
 
         <div
           style={{
