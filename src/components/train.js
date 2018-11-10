@@ -7,46 +7,50 @@ const Train = props => {
   const train = props.data
   const settings = props.settings
   const from = train.timeTableRows.findIndex(
-    row => row.stationShortCode === settings.from.stationShortCode && row.type === `DEPARTURE`
+    row =>
+      row.stationShortCode === settings.from.stationShortCode &&
+      row.type === `DEPARTURE`
   )
 
   const to = train.timeTableRows.findIndex(
-    row => row.stationShortCode === settings.to.stationShortCode && row.type === `ARRIVAL`
+    row =>
+      row.stationShortCode === settings.to.stationShortCode &&
+      row.type === `ARRIVAL`
   )
 
-  if (from > to || from === -1 || to === -1 || (train.timeTableRows[from] && train.timeTableRows[from].actualTime)) {
+  if (
+    from > to ||
+    from === -1 ||
+    to === -1 ||
+    (train.timeTableRows[from] && train.timeTableRows[from].actualTime)
+  ) {
     return false
   }
-  // console.log(from, to)
 
   const departureFrom = train.timeTableRows.filter(
     station =>
       station.stationShortCode === props.settings.from.stationShortCode &&
       station.type === `DEPARTURE`
   )[0]
-
-  // console.log(departureFrom)
-
+  const cancelled = departureFrom.cancelled
+  console.log(departureFrom)
   return (
-    <tr>
+    <tr className={cancelled ? `cancelled` : ``}>
       <td>
         {train.commuterLineID || `${train.trainType} ${train.trainNumber}`}
       </td>
       <td>
-        {departureFrom.differenceInMinutes && departureFrom.differenceInMinutes > 1 && departureFrom.liveEstimateTime !== null
+        {departureFrom.differenceInMinutes &&
+        departureFrom.differenceInMinutes > 1 &&
+        departureFrom.liveEstimateTime !== null
           ? `~ ${DateTime.fromISO(departureFrom.liveEstimateTime).
             setLocale(`fi-FI`).
             toLocaleString(DateTime.TIME_24_SIMPLE)}`
-          :
-          ` ${DateTime.fromISO(departureFrom.scheduledTime).
+          : ` ${DateTime.fromISO(departureFrom.scheduledTime).
             setLocale(`fi-FI`).
-            toLocaleString(DateTime.TIME_24_SIMPLE)}`
-        }
+            toLocaleString(DateTime.TIME_24_SIMPLE)}`}
       </td>
-      <td>
-        {departureFrom.commercialTrack}
-      </td>
-
+      <td>{cancelled ? `Peruttu` : departureFrom.commercialTrack}</td>
     </tr>
   )
 }

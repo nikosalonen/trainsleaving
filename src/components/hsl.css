@@ -4,6 +4,7 @@
 
 @font-face {
     font-family: 'HSL';
+    font-display: auto;
     src: url('/hsl-pikto-frame-webfont.eot');
     src: url('/hsl-pikto-frame-webfont.eot?#iefix') format('embedded-opentype'),
          url('/hsl-pikto-frame-webfont.woff2') format('woff2'),
@@ -19,6 +20,7 @@
 
 @font-face {
     font-family: 'hsl-piktonormal';
+    font-display: auto;
     src: url('/hsl-pikto-normal-webfont.eot');
     src: url('/hsl-pikto-normal-webfont.eot?#iefix') format('embedded-opentype'),
          url('/hsl-pikto-normal-webfont.woff2') format('woff2'),
@@ -32,6 +34,7 @@
 
 @font-face {
     font-family: 'gotham';
+    font-display: auto;
     src: url('/gothamrounded-medium-webfont.eot');
     src: url('/gothamrounded-medium-webfont.eot?#iefix') format('embedded-opentype'),
          url('/gothamrounded-medium-webfont.woff') format('woff'),
@@ -43,3 +46,8 @@
 .hslnormal{font-family: 'hsl-piktonormal', Arial,sans-serif;}
 .hsl { font-family: 'HSL', Arial, sans-serif; }
 .app {font-family: 'gotham', Arial, sans-serif!important;}
+
+.cancelled{
+    background-color: #FED100!important;
+    color: #DC0451
+}

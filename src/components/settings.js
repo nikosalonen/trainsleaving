@@ -19,7 +19,12 @@ const Settings = () => {
             {/* {JSON.stringify(suggestions)} */}
             <div className="columns">
               <div className="column col-12 col-ml-auto text-right">
-                <button className="btn c-hand " onClick={hideSettins}>
+                Asetukset{` `}
+                <button
+                  className="btn c-hand "
+                  onClick={hideSettins}
+                  aria-label="Näytä asetukset"
+                >
                   <span className=" ">
                     {trainSettings.showSettings ? (
                       <i className="icon icon-arrow-up " />

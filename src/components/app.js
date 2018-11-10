@@ -52,7 +52,7 @@ class App extends React.Component {
     }
     this.onSuggestionSelected = (
       event,
-      { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
+      { suggestion }
     ) => {
       let station = {}
       if (suggestion !== this.state.trainSettings[event.target.name]) {
