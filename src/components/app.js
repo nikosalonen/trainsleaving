@@ -50,10 +50,7 @@ class App extends React.Component {
         suggestions: [],
       })
     }
-    this.onSuggestionSelected = (
-      event,
-      { suggestion }
-    ) => {
+    this.onSuggestionSelected = (event, { suggestion }) => {
       let station = {}
       if (suggestion !== this.state.trainSettings[event.target.name]) {
         station = this.state.stations.filter(
@@ -74,9 +71,13 @@ class App extends React.Component {
       })
     }
     this.autocompleteOnChange = (id, newValue) => {
-      let station = {}
-      if (newValue !== this.state.trainSettings[id]) {
-        station = this.state.stations.filter(
+      let station = -1
+      if (
+        newValue &&
+        newValue.length > 3 &&
+        newValue !== this.state.trainSettings[id].stationName
+      ) {
+        station = this.state.stations.findIndex(
           station => newValue === station.stationName
         )
       }
@@ -85,12 +86,13 @@ class App extends React.Component {
         trainSettings: {
           ...this.state.trainSettings,
 
-          [id]: station.length
-            ? station[0]
-            : {
-              ...this.state.trainSettings[id],
-              stationName: newValue,
-            },
+          [id]:
+            station !== -1
+              ? this.state.stations[station]
+              : {
+                ...this.state.trainSettings[id],
+                stationName: newValue,
+              },
         },
       })
     }
@@ -191,7 +193,7 @@ class App extends React.Component {
 
       let query = `{
         viewer {
-          getStationsTrainsUsingGET( ${where}, station: "${from}", arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:200) {
+          getStationsTrainsUsingGET( ${where}, station: "${from}", arrived_trains:0, arriving_trains:0, departed_trains:0, departing_trains:100) {
             operatorUICCode
             trainCategory
             trainType
