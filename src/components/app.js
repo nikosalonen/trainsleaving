@@ -341,7 +341,7 @@ class App extends React.Component {
             <AppProvider value={this.state}>
               <Settings />
 
-              {this.state.trains ? (
+              {this.state.trains.length ? (
                 <Trains />
               ) : (
                 <div className="empty">
