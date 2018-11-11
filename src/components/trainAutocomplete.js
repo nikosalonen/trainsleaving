@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Autosuggest from 'react-autosuggest'
 import { AppConsumer } from '../context/context'
 
@@ -39,5 +40,11 @@ class TrainAutocomplete extends React.Component {
       </AppConsumer>
     )
   }
+}
+
+TrainAutocomplete.propTypes = {
+  placeholder: PropTypes.string,
+  id: PropTypes.number,
+  onChange: PropTypes.function,
 }
 export default TrainAutocomplete
