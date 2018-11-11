@@ -67,7 +67,7 @@ const Trains = () => {
                             DateTime.fromISO(first) - DateTime.fromISO(second)
                           )
                         }).
-                        map(train => {
+                        map((train, i) => {
                           if (
                             (!app.trainSettings.includeRussia &&
                               train.trainType === `AE`) ||
@@ -77,7 +77,9 @@ const Trains = () => {
                           }
                           return (
                             <Train
-                              key={train.trainNumber + train.operatorUICCode}
+                              key={
+                                train.trainNumber + train.operatorUICCode + i
+                              }
                               data={train}
                               settings={app.trainSettings}
                             />

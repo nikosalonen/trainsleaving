@@ -1,6 +1,7 @@
 import React from 'react'
 import Time from './time'
 import Trains from './trains'
+import Footer from './footer'
 import Settings from './settings'
 import axios from 'axios'
 import 'spectre.css'
@@ -356,6 +357,10 @@ class App extends React.Component {
                 </div>
               )}
             </AppProvider>
+          </div>
+          <div className="column col-12 text-center">
+            <div className="divider" />
+            <Footer />
           </div>
         </div>
       </div>
