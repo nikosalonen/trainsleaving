@@ -346,10 +346,8 @@ class App extends React.Component {
                 <Trains />
               ) : (
                 <div className="empty">
-                  <div className="empty-icon">
-                    <i className="icon icon-people" />
-                  </div>
-                  <p className="empty-title h5">Haetaan junatietoja 🚂</p>
+                  <div className="empty-icon">🚂</div>
+                  <p className="empty-title h5">Haetaan junatietoja</p>
                   <p className="empty-subtitle">
                     Tähän menee hetki internetyhteytesi nopeudesta riippuen.
                   </p>
