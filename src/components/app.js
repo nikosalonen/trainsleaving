@@ -7,6 +7,7 @@ import axios from 'axios'
 import 'spectre.css'
 import './layout.css'
 
+
 import { AppProvider } from '../context/context'
 
 class App extends React.Component {

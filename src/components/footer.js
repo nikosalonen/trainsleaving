@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 let pjson = require(`../../package.json`)
 const footer = () => (
   <div>
@@ -23,8 +24,8 @@ const footer = () => (
         rel="noopener noreferrer"
         href="https://twitter.com/nikosalonen"
       >
-        @nikosalonen
-      </a>
+        @nikosalonen</a> tai käytä <Link to="/feedback">palautelomaketta</Link>
+
       . <br />
       Junien tiedot ladataan Liikenneviraston
       {` `}
