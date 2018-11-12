@@ -4,6 +4,7 @@ import Trains from './trains'
 import Footer from './footer'
 import Settings from './settings'
 import axios from 'axios'
+import localStorage from 'localStorage'
 import 'spectre.css'
 import './layout.css'
 
@@ -72,6 +73,7 @@ class App extends React.Component {
       })
     }
     this.autocompleteOnChange = (id, newValue) => {
+      console.log(`autocomplete`, id, newValue)
       let station = -1
       if (
         newValue &&
@@ -172,7 +174,7 @@ class App extends React.Component {
             }
           }
         )
-        // console.log(stations)
+        localStorage.setItem(`stations`, JSON.stringify(stations))
         this.setState({ stations })
       })
     }
@@ -270,7 +272,9 @@ class App extends React.Component {
 
     this.state = {
       trains: [],
-      stations: [],
+      stations: localStorage.getItem(`stations`)
+        ? JSON.parse(localStorage.getItem(`stations`))
+        : [],
       suggestions: [],
       trainSettings: {
         showSettings: false,
@@ -307,7 +311,9 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.getTrains()
-    this.getStations()
+    if (!this.state.stations.length) {
+      this.getStations()
+    }
     this.interval = setInterval(() => this.getTrains(), 1000 * 60)
   }
 
@@ -333,6 +339,7 @@ class App extends React.Component {
 
   // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
+    console.log(this.state)
     return (
       <div className="app container">
         <div className="columns">

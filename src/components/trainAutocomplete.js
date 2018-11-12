@@ -44,7 +44,7 @@ class TrainAutocomplete extends React.Component {
 
 TrainAutocomplete.propTypes = {
   placeholder: PropTypes.string,
-  id: PropTypes.number,
-  onChange: PropTypes.function,
+  id: PropTypes.string,
+  onChange: PropTypes.any,
 }
 export default TrainAutocomplete
