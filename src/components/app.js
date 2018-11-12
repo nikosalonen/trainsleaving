@@ -7,7 +7,6 @@ import axios from 'axios'
 import 'spectre.css'
 import './layout.css'
 
-
 import { AppProvider } from '../context/context'
 
 class App extends React.Component {
@@ -265,6 +264,7 @@ class App extends React.Component {
           })
 
         this.setState({ trains })
+        this.setState({ ...this.state, previousSearch: trains.length })
       })
     }
 
@@ -348,11 +348,22 @@ class App extends React.Component {
               ) : (
                 <div className="empty">
                   <div className="empty-icon">🚂</div>
-                  <p className="empty-title h5">Haetaan junatietoja</p>
-                  <p className="empty-subtitle">
-                    Tähän menee hetki internetyhteytesi nopeudesta riippuen.
-                  </p>
-                  <div className="loading loading-lg" />
+                  {this.state.previousSearch !== 0 ? (
+                    <div>
+                      <p className="empty-title h5">Haetaan junatietoja</p>
+                      <p className="empty-subtitle">
+                        Tähän menee hetki internetyhteytesi nopeudesta riippuen.
+                      </p>
+                      <div className="loading loading-lg" />
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="empty-title h5">Pahoittelut!</p>
+                      <p className="empty-subtitle">
+                        Valitulla haulla ei löytynyt suoria junareittejä.
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </AppProvider>
