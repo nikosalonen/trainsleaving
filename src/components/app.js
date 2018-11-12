@@ -54,7 +54,6 @@ class App extends React.Component {
     }
     this.onSuggestionSelected = (event, { suggestion }) => {
       let station = {}
-      console.log(event.target.name, suggestion)
       if (suggestion !== this.state.trainSettings[event.target.name]) {
         station = this.state.stations.filter(
           station => suggestion === station.stationName
@@ -295,9 +294,9 @@ class App extends React.Component {
                   row.type === `DEPARTURE` &&
                   row.commercialStop === true
               ) !== -1
+
             return willArrive && willDeparture
           })
-
         this.setState({ trains })
         this.setState({ ...this.state, previousSearch: trains.length })
       })
