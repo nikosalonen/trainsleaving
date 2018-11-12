@@ -54,30 +54,38 @@ class App extends React.Component {
     }
     this.onSuggestionSelected = (event, { suggestion }) => {
       let station = {}
+      console.log(event.target.name, suggestion)
       if (suggestion !== this.state.trainSettings[event.target.name]) {
         station = this.state.stations.filter(
           station => suggestion === station.stationName
         )
       }
-      this.setState({
-        trainSettings: {
-          ...this.state.trainSettings,
+      this.setState(
+        {
+          trainSettings: {
+            ...this.state.trainSettings,
 
-          [event.target.name]: station.length
-            ? station[0]
-            : {
-              ...this.state.trainSettings[event.target.name],
-              stationName: suggestion,
-            },
+            [event.target.name]: station.length
+              ? station[0]
+              : {
+                ...this.state.trainSettings[event.target.name],
+                stationName: suggestion,
+              },
+          },
         },
-      })
+        () => {
+          localStorage.setItem(
+            `trainSettings`,
+            JSON.stringify(this.state.trainSettings)
+          )
+        }
+      )
     }
     this.autocompleteOnChange = (id, newValue) => {
-      console.log(`autocomplete`, id, newValue)
       let station = -1
       if (
         newValue &&
-        newValue.length > 3 &&
+        // newValue.length > 3 &&
         newValue !== this.state.trainSettings[id].stationName
       ) {
         station = this.state.stations.findIndex(
@@ -85,29 +93,45 @@ class App extends React.Component {
         )
       }
 
-      this.setState({
-        trainSettings: {
-          ...this.state.trainSettings,
+      this.setState(
+        {
+          trainSettings: {
+            ...this.state.trainSettings,
 
-          [id]:
-            station !== -1
-              ? this.state.stations[station]
-              : {
-                ...this.state.trainSettings[id],
-                stationName: newValue,
-              },
+            [id]:
+              station !== -1
+                ? this.state.stations[station]
+                : {
+                  ...this.state.trainSettings[id],
+                  stationName: newValue,
+                },
+          },
         },
-      })
+        () => {
+          localStorage.setItem(
+            `trainSettings`,
+            JSON.stringify(this.state.trainSettings)
+          )
+        }
+      )
     }
 
     this.swapStations = () => {
-      this.setState({
-        trainSettings: {
-          ...this.state.trainSettings,
-          to: this.state.trainSettings.from,
-          from: this.state.trainSettings.to,
+      this.setState(
+        {
+          trainSettings: {
+            ...this.state.trainSettings,
+            to: this.state.trainSettings.from,
+            from: this.state.trainSettings.to,
+          },
         },
-      })
+        () => {
+          localStorage.setItem(
+            `trainSettings`,
+            JSON.stringify(this.state.trainSettings)
+          )
+        }
+      )
     }
 
     this.hideSettins = () => {
@@ -131,9 +155,17 @@ class App extends React.Component {
       if (value === false && this.state.trainSettings[other] === false) {
         update = { ...update, [other]: true }
       }
-      this.setState({
-        trainSettings: { ...this.state.trainSettings, ...update },
-      })
+      this.setState(
+        {
+          trainSettings: { ...this.state.trainSettings, ...update },
+        },
+        () => {
+          localStorage.setItem(
+            `trainSettings`,
+            JSON.stringify(this.state.trainSettings)
+          )
+        }
+      )
     }
 
     this.reInit = (erase = false) => {
@@ -174,8 +206,9 @@ class App extends React.Component {
             }
           }
         )
-        localStorage.setItem(`stations`, JSON.stringify(stations))
-        this.setState({ stations })
+        this.setState({ stations }, () => {
+          localStorage.setItem(`stations`, JSON.stringify(stations))
+        })
       })
     }
     this.getTrains = () => {
@@ -276,25 +309,27 @@ class App extends React.Component {
         ? JSON.parse(localStorage.getItem(`stations`))
         : [],
       suggestions: [],
-      trainSettings: {
-        showSettings: false,
-        from: {
-          stationShortCode: `HKI`,
-          stationName: `Helsinki`,
-          latitude: 60.172097,
-          longitude: 24.941249,
+      trainSettings: localStorage.getItem(`trainSettings`)
+        ? JSON.parse(localStorage.getItem(`trainSettings`))
+        : {
+          showSettings: false,
+          from: {
+            stationShortCode: `HKI`,
+            stationName: `Helsinki`,
+            latitude: 60.172097,
+            longitude: 24.941249,
+          },
+          to: {
+            stationShortCode: `TKL`,
+            stationName: `Tikkurila`,
+            latitude: 60.292166,
+            longitude: 25.044055,
+          },
+          showCancelled: false,
+          includeLongDistance: false,
+          includeCommuter: true,
+          includeRussia: false,
         },
-        to: {
-          stationShortCode: `TKL`,
-          stationName: `Tikkurila`,
-          latitude: 60.292166,
-          longitude: 25.044055,
-        },
-        showCancelled: false,
-        includeLongDistance: false,
-        includeCommuter: true,
-        includeRussia: false,
-      },
       getTrains: this.getTrains,
       getStations: this.getStations,
       swapStations: this.swapStations,
@@ -339,7 +374,6 @@ class App extends React.Component {
 
   // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
-    console.log(this.state)
     return (
       <div className="app container">
         <div className="columns">
