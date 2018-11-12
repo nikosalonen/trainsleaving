@@ -53,5 +53,6 @@ module.exports = {
         cookieDomain: `lahtevat.info`,
       },
     },
+    `gatsby-plugin-netlify`,
   ],
 }
