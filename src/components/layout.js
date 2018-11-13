@@ -27,7 +27,7 @@ const Layout = ({ children }) => (
           <script
             async
             crossOrigin="anonymous"
-            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
 
           <html lang="fi" />
