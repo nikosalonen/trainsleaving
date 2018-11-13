@@ -381,7 +381,9 @@ class App extends React.Component {
           </div>
           <div className="column col-12">
             <AppProvider value={this.state}>
-              <Settings />
+              <section className="setting">
+                <Settings />
+              </section>
               <h2>
                 {this.state.trainSettings.from.stationName}
                 {` `}
@@ -389,35 +391,37 @@ class App extends React.Component {
                 {` `}
                 {this.state.trainSettings.to.stationName}
               </h2>
-              {this.state.trains.length ? (
-                <Trains />
-              ) : (
-                <div className="empty">
-                  <div className="empty-icon">🚂</div>
-                  {this.state.previousSearch !== 0 ? (
-                    <div>
-                      <p className="empty-title h5">Haetaan junatietoja</p>
-                      <p className="empty-subtitle">
+              <section>
+                {this.state.trains.length ? (
+                  <Trains />
+                ) : (
+                  <div className="empty">
+                    <div className="empty-icon">🚂</div>
+                    {this.state.previousSearch !== 0 ? (
+                      <div>
+                        <p className="empty-title h5">Haetaan junatietoja</p>
+                        <p className="empty-subtitle">
                         Tähän menee hetki internetyhteytesi nopeudesta riippuen.
-                      </p>
-                      <div className="loading loading-lg" />
-                    </div>
-                  ) : (
-                    <div>
-                      <p className="empty-title h5">Pahoittelut!</p>
-                      <p className="empty-subtitle">
+                        </p>
+                        <div className="loading loading-lg" />
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="empty-title h5">Pahoittelut!</p>
+                        <p className="empty-subtitle">
                         Valitulla haulla ei löytynyt suoria junareittejä.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </section>
             </AppProvider>
           </div>
-          <div className="column col-12 text-center">
+          <footer className="column col-12 text-center">
             <div className="divider" />
             <Footer />
-          </div>
+          </footer>
         </div>
       </div>
     )
