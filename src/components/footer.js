@@ -4,70 +4,69 @@ import Image from './image'
 let pjson = require(`../../package.json`)
 const footer = () => (
   <div>
-    <p style={{ color: `##bcc3ce` }}>
-      Lahtevat.info v{pjson.version} <br />
-      Sivuston lähdekoodi on saatavilla
-      {` `}
-      <a
-        aria-label="Linkki Githubiin"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/nikosalonen/trainsleaving"
-      >
+    <div style={{ color: `##bcc3ce` }}>
+      <p>Lahtevat.info v{pjson.version} </p>
+      <p>Sivuston lähdekoodi on saatavilla
+        {` `}
+        <a
+          aria-label="Linkki Githubiin"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/nikosalonen/trainsleaving"
+        >
         GitHubissa
-      </a>
-      . <br />
-      Voit myös laittaa kehitysehdoituksia Twitterissä
-      {` `}
-      <a
-        aria-label="Linkki Twitteriin"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://twitter.com/nikosalonen"
-      >
+        </a>
+      . </p>
+      <p>Voit myös laittaa kehitysehdoituksia Twitterissä
+        {` `}
+        <a
+          aria-label="Linkki Twitteriin"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://twitter.com/nikosalonen"
+        >
         @nikosalonen</a> tai käytä <Link to="/feedback">palautelomaketta</Link>
 
-      . <br />
-      Junien tiedot ladataan Liikenneviraston
-      {` `}
-      <a
-        aria-label="Linkki Liikenneviraston Digitraffic rajapintaan"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://rata.digitraffic.fi/"
-      >
+      . </p>
+      <p>Junien tiedot ladataan Liikenneviraston
+        {` `}
+        <a
+          aria-label="Linkki Liikenneviraston Digitraffic rajapintaan"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://rata.digitraffic.fi/"
+        >
         Digitraffic-rajapinnasta
-      </a>
+        </a>
       . Rajapinnan lisenssi on
-      {` `}
-      <a
-        aria-label="Linkki rajapinnan lisenssitietoihin"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://creativecommons.org/licenses/by/4.0/"
-      >
+        {` `}
+        <a
+          aria-label="Linkki rajapinnan lisenssitietoihin"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://creativecommons.org/licenses/by/4.0/"
+        >
         CC BY 4.0
-      </a>
-      .{` `}
-      <br />
-      Logona käytetty piktogrammi on osa HSL tarjoamaa
-      {` `}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.hsl.fi/tyyliopas/piktogrammit"
-      >
+        </a>
+      .</p>
+      <p>Logona käytetty piktogrammi on osa HSL tarjoamaa
+        {` `}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.hsl.fi/tyyliopas/piktogrammit"
+        >
         Tyyliopasta
-        <br /><br />
-        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin:`auto` }}>
-          <a target="_blank" rel="noopener noreferrer" href="https://brave.com/lah235" >
-            <Image />
+        </a>
+      </p>
+      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin: `auto` }}>
+        <a target="_blank" rel="noopener noreferrer" href="https://brave.com/lah235" >
+          <Image />
 
-          </a>
-        </div>
+        </a>
+      </div>
 
-      </a>
-    </p>
+    </div>
   </div>
 )
 export default footer

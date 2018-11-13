@@ -7,6 +7,7 @@ import axios from 'axios'
 import localStorage from 'localStorage'
 import 'spectre.css'
 import './layout.css'
+import ReactFitText from 'react-fittext'
 
 import { AppProvider } from '../context/context'
 
@@ -393,13 +394,15 @@ class App extends React.Component {
               <section className="setting">
                 <Settings />
               </section>
-              <h2>
-                {this.state.trainSettings.from.stationName}
-                {` `}
-                <span className="hslnormal">D</span>
-                {` `}
-                {this.state.trainSettings.to.stationName}
-              </h2>
+              <ReactFitText maxFontSize={32}>
+                <h2>
+                  {this.state.trainSettings.from.stationName}
+                  {` `}
+                  <span className="hslnormal">D</span>
+                  {` `}
+                  {this.state.trainSettings.to.stationName}
+                </h2>
+              </ReactFitText>
               <section>
                 {this.state.trains.length ? (
                   <Trains />

@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import 'spectre.css'
 import './hsl.css'
 import './layout.css'
+import ReactFitText from 'react-fittext'
 
 const Header = ({ siteTitle }) => (
   <div
@@ -57,18 +58,20 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 className="app" style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          <span className="hsl white">4</span>
-          {siteTitle}
-        </Link>
-      </h1>
+      <ReactFitText maxFontSize={40}>
+        <h1 className="app" style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            <span className="hsl white">4</span>
+            {siteTitle}
+          </Link>
+        </h1>
+      </ReactFitText>
     </div>
   </div>
 )
