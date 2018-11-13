@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Image from './image'
 let pjson = require(`../../package.json`)
 const footer = () => (
   <div>
@@ -57,6 +58,14 @@ const footer = () => (
         href="https://www.hsl.fi/tyyliopas/piktogrammit"
       >
         Tyyliopasta
+        <br /><br />
+        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin:`auto` }}>
+          <a target="_blank" rel="noopener noreferrer" href="https://brave.com/lah235" >
+            <Image />
+
+          </a>
+        </div>
+
       </a>
     </p>
   </div>
