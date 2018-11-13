@@ -140,6 +140,11 @@ class App extends React.Component {
           ...this.state.trainSettings,
           showSettings: !this.state.trainSettings.showSettings,
         },
+      }, () => {
+        localStorage.setItem(
+          `trainSettings`,
+          JSON.stringify(this.state.trainSettings)
+        )
       })
     }
 
