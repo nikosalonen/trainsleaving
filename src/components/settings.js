@@ -6,7 +6,7 @@ import 'spectre.css/dist/spectre-icons.min.css'
 import 'spectre.css/dist/spectre-exp.min.css'
 const Settings = () => {
   return (
-    <div>
+    <div id="settings">
       <AppConsumer>
         {({
           toggleSetting,

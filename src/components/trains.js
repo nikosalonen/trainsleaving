@@ -11,13 +11,13 @@ const Trains = () => {
     <div>
       <AppConsumer>
         {app => (
-          <div>
+          <div id="trainWrapper">
 
-            <div id="trains">
+            <section id="trains">
               <button className="btn" onClick={app.swapStations}>
                 Vaihda suunta
               </button>
-              <div>
+              <div id="trainTable">
                 <table className="table table-striped table-hover">
                   <thead>
                     <tr>
@@ -82,7 +82,7 @@ const Trains = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </section>
           </div>
         )}
       </AppConsumer>
