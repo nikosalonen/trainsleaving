@@ -29,14 +29,7 @@ const Layout = ({ children }) => (
             crossOrigin="anonymous"
             src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
-          <script>
-            {`
-                (adsbygoogle = window.adsbygoogle || []).push({
-                      google_ad_client: "ca-pub-0748442567853482",
-                      enable_page_level_ads: true
-                });`
-            }
-          </script>
+
           <html lang="fi" />
           <meta name="title" content={data.site.siteMetadata.title} />
           <meta
@@ -81,7 +74,14 @@ const Layout = ({ children }) => (
           <meta name="robots" content={`index, follow`} />
           <meta name="twitter:creator" content={`@nikosalonen`} />
           <meta name="og:site_name" content={`lahtevat.info`} />
-
+          <script>
+            {`
+                (adsbygoogle = window.adsbygoogle || []).push({
+                      google_ad_client: "ca-pub-0748442567853482",
+                      enable_page_level_ads: true
+                });`
+            }
+          </script>
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
