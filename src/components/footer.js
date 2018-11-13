@@ -62,10 +62,11 @@ const footer = () => (
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin: `auto` }}>
         <a target="_blank" rel="noopener noreferrer" href="https://brave.com/lah235" >
           <Image />
-
         </a>
       </div>
-
+      <p>
+        <Link to="/cookies">Käytämme evästeitä</Link>
+      </p>
     </div>
   </div>
 )
