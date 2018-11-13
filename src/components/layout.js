@@ -26,6 +26,7 @@ const Layout = ({ children }) => (
         <Helmet title={data.site.siteMetadata.title}>
           <script
             async
+            crossOrigin="anonymous"
             src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
           <script>
