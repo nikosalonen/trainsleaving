@@ -11,11 +11,11 @@ const Feedback = () => (
           <form name="contact" method="POST" netlify data-netlify="true" data-netlify-honeypot="bot-field" action="/thanks/">
             <div className="form-group">
               <label className="form-label" htmlFor="name">Nimi:</label>
-              <input required className="form-input" type="text" id="name" placeholder="Nimi" />
+              <input required className="form-input" type="text" id="name" name="name" placeholder="Nimi" />
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="email">Sähköposti:</label>
-              <input required className="form-input" type="email" id="email" placeholder="Sähköposti" />
+              <input required className="form-input" type="email" name="email" id="email" placeholder="Sähköposti" />
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="message">Viesti:</label>
