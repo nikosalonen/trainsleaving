@@ -12,13 +12,7 @@ const Trains = () => {
       <AppConsumer>
         {app => (
           <div>
-            <h2>
-              {app.trainSettings.from.stationName}
-              {` `}
-              <span className="hslnormal">D</span>
-              {` `}
-              {app.trainSettings.to.stationName}
-            </h2>
+
             <div id="trains">
               <button className="btn" onClick={app.swapStations}>
                 Vaihda suunta

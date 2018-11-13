@@ -382,7 +382,13 @@ class App extends React.Component {
           <div className="column col-12">
             <AppProvider value={this.state}>
               <Settings />
-
+              <h2>
+                {this.state.trainSettings.from.stationName}
+                {` `}
+                <span className="hslnormal">D</span>
+                {` `}
+                {this.state.trainSettings.to.stationName}
+              </h2>
               {this.state.trains.length ? (
                 <Trains />
               ) : (
