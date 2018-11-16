@@ -70,7 +70,7 @@ const Header = ({ siteTitle }) => (
             }}
           >
             <span className="hsl white">4</span>
-            {siteTitle}
+            Lähtevät junat
           </Link>
         </h1>
       </ReactFitText>
