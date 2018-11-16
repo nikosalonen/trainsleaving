@@ -32,6 +32,8 @@ const Header = ({ siteTitle }) => (
         <a
           href="https://github.com/nikosalonen/trainsleaving"
           className="github-corner"
+          title="View source on GitHub"
+          alt="View source on GitHub"
           aria-label="View source on GitHub"
           target="_blank"
           rel="noopener noreferrer"
