@@ -25,7 +25,6 @@ const Layout = ({ children }) => (
       <div>
         <Helmet title={data.site.siteMetadata.title}>
 
-
           <html lang="fi" />
           <meta name="title" content={data.site.siteMetadata.title} />
           <meta

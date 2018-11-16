@@ -7,6 +7,14 @@ module.exports = {
     thumbnail: ``,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://lahtevat.info`,
+        sitemap: `https://lahtevat.info/sitemap.xml`,
+        configFile: `robots-txt.config.js`
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
