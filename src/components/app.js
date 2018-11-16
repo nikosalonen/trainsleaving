@@ -391,7 +391,7 @@ class App extends React.Component {
               data-full-width-responsive="true"></ins>` }}></div>
 
           </div>
-          <div className="column col-6 col-ml-auto text-right">
+          <div className="column col-12 col-ml-auto text-right">
             <Time />
           </div>
           <div className="column col-12">
