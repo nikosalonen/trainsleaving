@@ -5308,6 +5308,13 @@ gatsby-link@^2.0.6:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
+gatsby-plugin-canonical-urls@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.0.7.tgz#ea64f78383d16158a8c742b1fe31c9901e68f205"
+  integrity sha512-5GR+BFoUWD/VwGil0k+RZ9WYw0CWTXfb79zcPW7GG8RztW1ESf0wBwfWxH4pFJgo5jqtD7ZGg0tIgZeVwygbhQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-eslint@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.1.tgz#88641be50b95a867416878c43b64458a2d6b9c21"
