@@ -3,9 +3,11 @@ module.exports = {
     title: `Lähtevät junat - vain sinulle tärkeät lähdöt`,
     description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
     url: `https://lahtevat.info`,
+    siteUrl: `https://lahtevat.info`,
     thumbnail: ``,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-eslint`,
