@@ -14,9 +14,7 @@ const Trains = () => {
           <div id="trainWrapper">
 
             <section id="trains">
-              <button className="btn" onClick={app.swapStations}>
-                Vaihda suunta
-              </button>
+
               <div id="trainTable">
                 <table className="table table-striped table-hover">
                   <thead>
