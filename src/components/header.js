@@ -6,7 +6,7 @@ import './hsl.css'
 import './layout.css'
 import ReactFitText from 'react-fittext'
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <div
     // vr #55a700
     style={{
