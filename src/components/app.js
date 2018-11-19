@@ -408,6 +408,9 @@ class App extends React.Component {
                   {this.state.trainSettings.to.stationName}
                 </h2>
               </ReactFitText>
+              <button className="btn" onClick={this.state.swapStations}>
+                Vaihda suunta
+              </button>
               <section>
                 {this.state.trains.length ? (
                   <Trains />
