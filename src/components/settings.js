@@ -19,7 +19,7 @@ const Settings = () => {
             {/* {JSON.stringify(suggestions)} */}
             <div className="columns">
               <div className="column col-12 col-ml-auto text-right">
-                Asetukset
+                Muuta asemia 👉
                 {` `}
                 <button
                   className="btn c-hand "
@@ -40,7 +40,7 @@ const Settings = () => {
                   <div className="divider" />
 
                   <div className="columns">
-                    <div className="column col-6 col-sm-12">
+                    <div className="column col-3 col-sm-12">
                       <div className="form-group">
                         <label className="form-switch">
                           <input
@@ -75,8 +75,8 @@ const Settings = () => {
                         </label>
                       </div>
                     </div>
-                    <div className="column col-6 col-sm-12">
-                      <div className="form-group">
+                    <div className="column col-9 col-sm-12">
+                      <div className="form-group ">
                         <label className="form-label" htmlFor="from">
                           Mistä:
                           {stations &&
