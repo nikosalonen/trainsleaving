@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Lähtevät junat - vain sinulle tärkeät lähdöt`,
+    title: `Lähtevät junat - vain sinulle tärkeät junat`,
     description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
     url: `https://lahtevat.info`,
     siteUrl: `https://lahtevat.info`,
@@ -47,12 +47,16 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Lähtevät junat`,
+        description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
         short_name: `Lähtevät`,
-        start_url: `/`,
+        start_url: `/?utm_source=PWA`,
         background_color: `#8d449b`,
         theme_color: `#8d449b`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/Juna.png`, // This path is relative to the root of the site.
+        lang: `fi`,
+        orientation: `portrait`,
+
       },
     },
     `gatsby-plugin-offline`,
