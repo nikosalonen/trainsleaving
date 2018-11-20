@@ -35,6 +35,15 @@ const Train = props => {
   if (departureFrom.cancelled && !settings.showCancelled) {
     return false
   }
+
+
+  const arriveTo = train.timeTableRows.filter(
+    station =>
+      station.stationShortCode === props.settings.to.stationShortCode &&
+      station.type === `ARRIVAL`
+  )[0]
+
+
   const cancelled = departureFrom.cancelled && settings.showCancelled
 
   return (
@@ -54,6 +63,15 @@ const Train = props => {
             toLocaleString(DateTime.TIME_24_SIMPLE)}`}
       </td>
       <td>{cancelled ? `Peruttu` : departureFrom.commercialTrack}</td>
+      <td>{arriveTo.differenceInMinutes &&
+        arriveTo.differenceInMinutes > 1 &&
+        arriveTo.liveEstimateTime !== null
+        ? `~ ${DateTime.fromISO(arriveTo.liveEstimateTime).
+          setLocale(`fi-FI`).
+          toLocaleString(DateTime.TIME_24_SIMPLE)}`
+        : ` ${DateTime.fromISO(arriveTo.scheduledTime).
+          setLocale(`fi-FI`).
+          toLocaleString(DateTime.TIME_24_SIMPLE)}`}</td>
     </tr>
   )
 }

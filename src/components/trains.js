@@ -22,6 +22,7 @@ const Trains = () => {
                       <th>Juna</th>
                       <th>Lähtee</th>
                       <th>Raide</th>
+                      <th>Perillä</th>
                     </tr>
                   </thead>
                   <tbody>
