@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.lahtevat.info">
+  <a href="https://www.lahtevat.info/?utm_source=GitHub">
     <img alt="Lähtevät junat" src="https://lahtevat.info/icons/icon-192x192.png" width="60" />
   </a>
 </p>
