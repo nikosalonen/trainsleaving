@@ -60,10 +60,12 @@ const Header = () => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <ReactFitText maxFontSize={40}>
-        <div>
-          <span className="hsl white">4</span>
-          <h1 className="app" style={{ margin: 0, display: `inline-block` }}>
+
+      {/* <span className="hsl white" style={{ fontSize: 40, display: `inline`  }}>4</span> */}
+      <div style={{ display: `inline` }}>
+
+        <ReactFitText maxFontSize={40}>
+          <h1 className="app" style={{ margin: 0 }}>
             <Link
               to="/"
               style={{
@@ -75,8 +77,8 @@ const Header = () => (
             Lähtevät junat
             </Link>
           </h1>
-        </div>
-      </ReactFitText>
+        </ReactFitText>
+      </div>
     </div>
   </div>
 )

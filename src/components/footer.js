@@ -49,7 +49,7 @@ const footer = () => (
         CC BY 4.0
         </a>
       .</p>
-      <p>Logona käytetty piktogrammi on osa HSL tarjoamaa
+      {/* <p>Logona käytetty piktogrammi on osa HSL tarjoamaa
         {` `}
         <a
           target="_blank"
@@ -58,7 +58,7 @@ const footer = () => (
         >
         Tyyliopasta
         </a>
-      </p>
+      </p> */}
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, margin: `auto` }}>
         <a target="_blank" rel="noopener noreferrer" href="https://brave.com/lah235" >
           <Image />
