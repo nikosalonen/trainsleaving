@@ -61,18 +61,21 @@ const Header = () => (
       }}
     >
       <ReactFitText maxFontSize={40}>
-        <h1 className="app" style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            <span className="hsl white">4</span>
+        <div>
+          <span className="hsl white">4</span>
+          <h1 className="app" style={{ margin: 0, display: `inline-block` }}>
+            <Link
+              to="/"
+              style={{
+                color: `white`,
+                textDecoration: `none`,
+              }}
+            >
+
             Lähtevät junat
-          </Link>
-        </h1>
+            </Link>
+          </h1>
+        </div>
       </ReactFitText>
     </div>
   </div>

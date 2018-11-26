@@ -44,7 +44,9 @@
 
 }
 .hslnormal{font-family: 'hsl-piktonormal', Arial,sans-serif;}
-.hsl { font-family: 'HSL', Arial, sans-serif; }
+.hsl { font-family: 'HSL', Arial, sans-serif;
+display: inline-block;
+color:white!important; }
 .app {font-family: 'gotham', Arial, sans-serif!important;}
 
 .cancelled{
