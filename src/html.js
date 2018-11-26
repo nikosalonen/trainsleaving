@@ -10,10 +10,9 @@ export default class HTML extends React.Component {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            content="width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           {this.props.headComponents}
-
           <script
             async
             src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
