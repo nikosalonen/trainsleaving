@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Lähtevät junat - vain sinulle tärkeät junat`,
+    title: `Lähtevät junat - vain sinulle tärkeät lähdöt ja raiteet`,
     description: `Katso lähtöajat vain niille junille jotka pysähtyvät sinun määränpäässäsi.`,
     url: `https://lahtevat.info`,
     siteUrl: `https://lahtevat.info`,
