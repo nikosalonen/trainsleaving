@@ -24,14 +24,13 @@ const Layout = ({ children }) => (
     render={data => (
       <div>
         <Helmet title={data.site.siteMetadata.title}>
-
           <html lang="fi" />
           <meta name="title" content={data.site.siteMetadata.title} />
           <meta
             name="description"
             content={data.site.siteMetadata.description}
           />
-          <meta name="robots" content="index, follow">
+          <meta name="og:site_name" content={`lahtevat.info`} />
           <meta name="og:title" content={data.site.siteMetadata.title} />
           <meta name="og:url" content={data.site.siteMetadata.url} />
           <meta
@@ -69,8 +68,6 @@ const Layout = ({ children }) => (
           />
           <meta name="robots" content={`index, follow`} />
           <meta name="twitter:creator" content={`@nikosalonen`} />
-          <meta name="og:site_name" content={`lahtevat.info`} />
-
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
