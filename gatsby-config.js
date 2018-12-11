@@ -74,5 +74,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
+    `gatsby-transformer-open-graph`
   ],
 }
