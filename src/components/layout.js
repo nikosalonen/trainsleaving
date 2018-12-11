@@ -31,6 +31,7 @@ const Layout = ({ children }) => (
             name="description"
             content={data.site.siteMetadata.description}
           />
+          <meta name="robots" content="index, follow">
           <meta name="og:title" content={data.site.siteMetadata.title} />
           <meta name="og:url" content={data.site.siteMetadata.url} />
           <meta
