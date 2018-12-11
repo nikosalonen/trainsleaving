@@ -1,3 +1,3 @@
 module.exports = {
-  policy: [ { userAgent: `*`,  disallow: [ `/thanks` ]  } ]
+  policy: [ { userAgent: `*`,  disallow: [ `/thanks/` ]  } ]
 }
