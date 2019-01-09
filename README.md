@@ -11,8 +11,8 @@ Lahtevat.info avulla saat suodatetun näkymän sinulle tärkeistä lähtevistä 
 
 Voit valita näytetäänkö lähijunat, kaukojunat ja peruutetut junat vai ei.
 
-Junien tiedot ladataan Liikenneviraston <a
-          aria-label="Linkki Liikenneviraston Digitraffic rajapintaan"
+Junien tiedot ladataan Traffic Management Finlandin <a
+          aria-label="Linkki Traffic Management Finland rajapintaan"
           target="_blank"
           rel="noopener noreferrer"
           href="https://rata.digitraffic.fi/"
