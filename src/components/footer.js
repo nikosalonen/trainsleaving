@@ -28,10 +28,10 @@ const footer = () => (
         @nikosalonen</a> tai käytä <Link to="/feedback">palautelomaketta</Link>
 
       . </p>
-      <p>Junien tiedot ladataan Liikenneviraston
+      <p>Junien tiedot ladataan Traffic Management Finlandin
         {` `}
         <a
-          aria-label="Linkki Liikenneviraston Digitraffic rajapintaan"
+          aria-label="Linkki Traffic Management Finland Digitraffic rajapintaan"
           target="_blank"
           rel="noopener noreferrer"
           href="https://rata.digitraffic.fi/"
