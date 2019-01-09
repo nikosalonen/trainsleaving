@@ -377,13 +377,14 @@ class App extends React.Component {
     clearInterval(this.interval)
   }
 
-  // https://rata.digitraffic.fi/api/v1/metadata/stations
   render() {
     return (
       <div className="app container">
         <div className="columns">
           <div className="column col-12">
-            <div dangerouslySetInnerHTML={{ __html:`            <ins className="adsbygoogle"
+            <div dangerouslySetInnerHTML={{
+              __html:`
+            <ins className="adsbygoogle"
               style="display:block"
               data-ad-client="ca-pub-0748442567853482"
               data-ad-slot="4962001778"

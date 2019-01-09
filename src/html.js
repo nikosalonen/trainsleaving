@@ -13,14 +13,6 @@ export default class HTML extends React.Component {
             content="width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           {this.props.headComponents}
-          <script
-            async
-            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          />
-          <script dangerouslySetInnerHTML={{ __html: `(adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-0748442567853482",
-              enable_page_level_ads: true
-        })` }} ></script>
 
 
         </head>
