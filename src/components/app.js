@@ -382,14 +382,7 @@ class App extends React.Component {
       <div className="app container">
         <div className="columns">
           <div className="column col-12">
-            <div dangerouslySetInnerHTML={{
-              __html:`
-            <ins className="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-0748442567853482"
-              data-ad-slot="4962001778"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>` }}></div>
+
 
           </div>
           <div className="column col-12 col-ml-auto text-right">
