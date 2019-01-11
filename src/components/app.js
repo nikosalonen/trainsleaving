@@ -24,7 +24,7 @@ class App extends React.Component {
         : this.state.stations.filter(
           station =>
             station.stationName.toLowerCase().slice(0, inputLength) ===
-              inputValue
+            inputValue
         )
     }
 
@@ -274,9 +274,9 @@ class App extends React.Component {
               timeTableRows: train.timeTableRows.filter(
                 row =>
                   row.stationShortCode ===
-                    this.state.trainSettings.to.stationShortCode ||
+                  this.state.trainSettings.to.stationShortCode ||
                   row.stationShortCode ===
-                    this.state.trainSettings.from.stationShortCode
+                  this.state.trainSettings.from.stationShortCode
               ),
             }
           }).
@@ -287,7 +287,7 @@ class App extends React.Component {
                 row =>
                   // Saapuu määränpäähän
                   row.stationShortCode ===
-                    this.state.trainSettings.to.stationShortCode &&
+                  this.state.trainSettings.to.stationShortCode &&
                   row.type === `ARRIVAL` &&
                   row.commercialStop === true
               ) !== -1
@@ -296,7 +296,7 @@ class App extends React.Component {
                 row =>
                   // Lähtee määränpäästä
                   row.stationShortCode ===
-                    this.state.trainSettings.from.stationShortCode &&
+                  this.state.trainSettings.from.stationShortCode &&
                   row.type === `DEPARTURE` &&
                   row.commercialStop === true
               ) !== -1
@@ -360,13 +360,13 @@ class App extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       prevState.trainSettings.from.stationShortCode !==
-        this.state.trainSettings.from.stationShortCode ||
+      this.state.trainSettings.from.stationShortCode ||
       prevState.trainSettings.to.stationShortCode !==
-        this.state.trainSettings.to.stationShortCode ||
+      this.state.trainSettings.to.stationShortCode ||
       prevState.trainSettings.includeCommuter !==
-        this.state.trainSettings.includeCommuter ||
+      this.state.trainSettings.includeCommuter ||
       prevState.trainSettings.includeLongDistance !==
-        this.state.trainSettings.includeLongDistance
+      this.state.trainSettings.includeLongDistance
     ) {
       clearInterval(this.interval)
       this.getTrains()
@@ -381,14 +381,17 @@ class App extends React.Component {
     return (
       <div className="app container">
         <div className="columns">
-          <div className="column col-xs-12">
+          <div className="column col-xs-12" dangerouslySetInnerHTML={{
+            __html: `<ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-0748442567853482"
+            data-ad-slot="8646542367"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            `
+          }}>
 
-            <ins className="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-0748442567853482"
-              data-ad-slot="8646542367"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
+
           </div>
           <div className="column col-12 col-ml-auto text-right">
             <Time />
@@ -420,7 +423,7 @@ class App extends React.Component {
                       <div>
                         <p className="empty-title h5">Haetaan junatietoja</p>
                         <p className="empty-subtitle">
-                        Tähän menee hetki internetyhteytesi nopeudesta riippuen.
+                            Tähän menee hetki internetyhteytesi nopeudesta riippuen.
                         </p>
                         <div className="loading loading-lg" />
                       </div>
@@ -428,7 +431,7 @@ class App extends React.Component {
                       <div>
                         <p className="empty-title h5">Pahoittelut!</p>
                         <p className="empty-subtitle">
-                        Valitulla haulla ei löytynyt suoria junareittejä.
+                              Valitulla haulla ei löytynyt suoria junareittejä.
                         </p>
                       </div>
                     )}
