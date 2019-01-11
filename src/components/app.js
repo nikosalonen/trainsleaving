@@ -382,7 +382,7 @@ class App extends React.Component {
       <div className="app container">
         <div className="columns">
           <div className="column col-xs-12" dangerouslySetInnerHTML={{
-            __html: `<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            __html: `
             <!-- Banneri -->
             <ins class="adsbygoogle"
                  style="display:block"
@@ -390,9 +390,7 @@ class App extends React.Component {
                  data-ad-slot="8646542367"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+
             `
           }}>
 
