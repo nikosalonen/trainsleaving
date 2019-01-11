@@ -1,7 +1,7 @@
 {
   "name": "trainstrainstrains",
   "description": "Which train leaves next to my destination",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "author": "Niko Salonen <nikotsalonen@gmail.com>",
   "dependencies": {
     "axios": "^0.18.0",
