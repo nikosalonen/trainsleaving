@@ -6,7 +6,7 @@ const Ads =  ({ client, slot }) => (
     <ins className="adsbygoogle"
       data-ad-client={client}
       data-ad-slot={slot}
-      style={{ display:`block`, height: 150 }}
+      style={{ display:`block` }}
       data-full-width-responsive="true"
     ></ins>
   </div>
