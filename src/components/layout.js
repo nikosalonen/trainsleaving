@@ -25,6 +25,7 @@ const Layout = ({ children }) => (
       <div>
         <Helmet title={data.site.siteMetadata.title}>
           <html lang="fi" />
+          <link rel="canonical" href={dadta.site.siteMetadata.siteUrl}/>
           <meta name="title" content={data.site.siteMetadata.title} />
           <meta
             name="description"
