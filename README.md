@@ -3,6 +3,9 @@
     <img alt="Lähtevät junat" src="https://lahtevat.info/icons/icon-192x192.png" width="60" />
   </a>
 </p>
+<p align="center">
+[![Netlify Status](https://api.netlify.com/api/v1/badges/058cbcbb-c01b-486d-a858-2f9a219a80b0/deploy-status)](https://app.netlify.com/sites/confident-nobel-e84b67/deploys)
+</p>
 <h1 align="center">
   Lahtevat.info
 </h1>
