@@ -62,7 +62,7 @@ const Header = () => (
     >
 
       {/* <span className="hsl white" style={{ fontSize: 40, display: `inline`  }}>4</span> */}
-      <div style={{ display: `inline` }}>
+      <div style={{ display: `inline`, textAlign: `center` }}>
 
         <ReactFitText maxFontSize={40}>
           <h1 className="app" style={{ margin: 0 }}>
