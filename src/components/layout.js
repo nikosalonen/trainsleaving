@@ -69,6 +69,8 @@ const Layout = ({ children }) => (
           />
           <meta name="robots" content={`index, follow`} />
           <meta name="twitter:creator" content={`@nikosalonen`} />
+
+          <meta name="google-site-verification" content="NuRSgXGapEL_G85YfsVZiAUD46eJKguHaOcu9gwMT24" />
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
