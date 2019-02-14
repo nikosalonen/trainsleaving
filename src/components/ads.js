@@ -7,6 +7,7 @@ const Ads =  ({ client, slot }) => (
       data-ad-client={client}
       data-ad-slot={slot}
       style={{ display:`block` }}
+      data-ad-format="auto"
       data-full-width-responsive="true"
     ></ins>
   </div>
