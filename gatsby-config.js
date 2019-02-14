@@ -52,7 +52,7 @@ module.exports = {
         start_url: `/?utm_source=PWA`,
         background_color: `#8d449b`,
         theme_color: `#8d449b`,
-        display: `standalone`,
+        display: `fullscreen`,
         icon: `src/images/Juna.png`, // This path is relative to the root of the site.
         lang: `fi`,
         orientation: `portrait`,
