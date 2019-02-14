@@ -15,7 +15,7 @@ const Header = () => (
     }}
   >
     <div>
-      <svg
+      {/* <svg
         width="80"
         height="80"
         viewBox="0 0 250 250"
@@ -51,7 +51,7 @@ const Header = () => (
             className="octo-body"
           />
         </a>
-      </svg>
+      </svg> */}
     </div>
     <div
       style={{
