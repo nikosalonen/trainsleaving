@@ -1,4 +1,10 @@
+body{
+  background-color: #8d449b;
+}
 
+#___gatsby{
+  background-color: #FFF;
+}
 
 ul li.react-autosuggest__suggestion, ul li.react-autosuggest__suggestion--first{
   margin-top: 0!important;
