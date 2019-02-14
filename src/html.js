@@ -19,7 +19,7 @@ export default class HTML extends React.Component {
           <script>
             {`
      (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-0748442567853482",
+          google_ad_client: 'ca-pub-0748442567853482',
           enable_page_level_ads: true
      });`}
           </script>
