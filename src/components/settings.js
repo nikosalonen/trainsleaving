@@ -19,7 +19,7 @@ const Settings = () => {
             {/* {JSON.stringify(suggestions)} */}
             <div className="columns">
               <div className="column col-12 col-ml-auto text-right">
-                Muuta asemia 👉
+                  Muuta asemia 👉
                 {` `}
                 <button
                   className="btn c-hand "
@@ -78,9 +78,9 @@ const Settings = () => {
                     <div className="column col-9 col-sm-12">
                       <div className="form-group ">
                         <label className="form-label" htmlFor="from">
-                          Mistä:
+                            Mistä:
                           {stations &&
-                            stations.length && (
+                              stations.length && (
                             <TrainAutocomplete
                               id="from"
                               placeholder="Lähtöpaikka"
@@ -91,10 +91,10 @@ const Settings = () => {
                       </div>
                       <div className="form-group">
                         <label className="form-label" htmlFor="to">
-                          Minne:
+                            Minne:
                           {` `}
                           {stations &&
-                            stations.length && (
+                              stations.length && (
                             <TrainAutocomplete
                               id="to"
                               placeholder="Päämäärä"

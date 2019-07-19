@@ -30,7 +30,7 @@ const Feedback = () => (
           </form>
           <div className="text-right">
 
-            <Link  to="/">Takaisin etusivulle</Link>
+            <Link to="/">Takaisin etusivulle</Link>
           </div>
         </div>
       </div>

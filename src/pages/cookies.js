@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../components/layout'
-import  'spectre.css'
+import 'spectre.css'
 
 const Cookies = () => (
   <Layout>

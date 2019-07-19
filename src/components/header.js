@@ -74,7 +74,7 @@ const Header = () => (
               }}
             >
 
-            Lähtevät junat
+              Lähtevät junat
             </Link>
           </h1>
         </ReactFitText>

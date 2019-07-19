@@ -53,8 +53,8 @@ const Train = props => {
       </td>
       <td>
         {departureFrom.differenceInMinutes &&
-        departureFrom.differenceInMinutes > 1 &&
-        departureFrom.liveEstimateTime !== null
+          departureFrom.differenceInMinutes > 1 &&
+          departureFrom.liveEstimateTime !== null
           ? `~ ${DateTime.fromISO(departureFrom.liveEstimateTime).
             setLocale(`fi-FI`).
             toLocaleString(DateTime.TIME_24_SIMPLE)}`

@@ -391,7 +391,7 @@ class App extends React.Component {
               data-ad-format="auto"
               data-full-width-responsive="true"></ins> */}
 
-            <Ads client={`ca-pub-0748442567853482`} slot={`4470981255`}/>
+            <Ads client={`ca-pub-0748442567853482`} slot={`4470981255`} />
           </div>
           <div className="column col-12 col-ml-auto text-right">
             <Time />

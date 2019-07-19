@@ -32,7 +32,7 @@ const Trains = () => {
                           const fromA = a.timeTableRows.findIndex(
                             row =>
                               row.stationShortCode ===
-                                app.trainSettings.from.stationShortCode &&
+                              app.trainSettings.from.stationShortCode &&
                               row.type === `DEPARTURE` &&
                               row.commercialStop === true
                           )
@@ -40,7 +40,7 @@ const Trains = () => {
                           const fromB = b.timeTableRows.findIndex(
                             row =>
                               row.stationShortCode ===
-                                app.trainSettings.from.stationShortCode &&
+                              app.trainSettings.from.stationShortCode &&
                               row.type === `DEPARTURE` &&
                               row.commercialStop === true
                           )

@@ -14,9 +14,9 @@ const footer = () => (
           rel="noopener noreferrer"
           href="https://github.com/nikosalonen/trainsleaving"
         >
-        GitHubissa
+          GitHubissa
         </a>
-      . </p>
+        . </p>
       <p>Voit myös laittaa kehitysehdoituksia Twitterissä
         {` `}
         <a
@@ -25,9 +25,9 @@ const footer = () => (
           rel="noopener noreferrer"
           href="https://twitter.com/nikosalonen"
         >
-        @nikosalonen</a> tai käytä <Link to="/feedback">palautelomaketta</Link>
+          @nikosalonen</a> tai käytä <Link to="/feedback">palautelomaketta</Link>
 
-      . </p>
+        . </p>
       <p>Junien tiedot ladataan Traffic Management Finlandin
         {` `}
         <a
@@ -36,9 +36,9 @@ const footer = () => (
           rel="noopener noreferrer"
           href="https://rata.digitraffic.fi/"
         >
-        Digitraffic-rajapinnasta
+          Digitraffic-rajapinnasta
         </a>
-      . Rajapinnan lisenssi on
+        . Rajapinnan lisenssi on
         {` `}
         <a
           aria-label="Linkki rajapinnan lisenssitietoihin"
@@ -46,9 +46,9 @@ const footer = () => (
           rel="noopener noreferrer"
           href="https://creativecommons.org/licenses/by/4.0/"
         >
-        CC BY 4.0
+          CC BY 4.0
         </a>
-      .</p>
+        .</p>
       {/* <p>Logona käytetty piktogrammi on osa HSL tarjoamaa
         {` `}
         <a
