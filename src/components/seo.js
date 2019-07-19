@@ -69,16 +69,16 @@ function SEO({
           name: `twitter:description`,
           content: metaDescription,
         },
-      ]
-        .concat(
+      ].
+        concat(
           keywords.length > 0
             ? {
               name: `keywords`,
               content: keywords.join(`, `),
             }
             : [],
-        )
-        .concat(meta)}
+        ).
+        concat(meta)}
     />
   )
 }

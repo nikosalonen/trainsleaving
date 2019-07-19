@@ -5,6 +5,7 @@ module.exports = {
     url: `https://lahtevat.info`,
     siteUrl: `https://lahtevat.info`,
     thumbnail: ``,
+    author: `@nikosalonen`
   },
   plugins: [
     {
