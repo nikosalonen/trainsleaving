@@ -6,5 +6,5 @@ notifications:
 dist: trusty
 sudo: false
 
-install: yarn
+install: npm
 script: gatsby build
