@@ -1,7 +1,9 @@
 {
   "parser": "babel-eslint",
-
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "env": {
     "es6": true,
     "node": true
@@ -13,13 +15,53 @@
       "jsx": true
     }
   },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass", // Regex for Component Factory to use,
+      // default to "createReactClass"
+      "pragma": "React", // Pragma to use, default to "React"
+      "version": "detect", // React version. "detect" automatically picks the version you have installed.
+      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+      // default to latest and warns if missing
+      // It will default to "detect" in the future
+      "flowVersion": "0.53" // Flow version
+    },
+    "propWrapperFunctions": [
+      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+      "forbidExtraProps",
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
+    ],
+    "linkComponents": [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      }
+    ]
+  },
   "rules": {
     "no-console": "warn",
     "no-template-curly-in-string": "warn",
-    "curly": ["warn", "multi-line"],
+    "curly": [
+      "warn",
+      "multi-line"
+    ],
     "default-case": "warn",
-    "eqeqeq": ["warn", "always"],
-    "dot-location": ["warn", "object"],
+    "eqeqeq": [
+      "warn",
+      "always"
+    ],
+    "dot-location": [
+      "warn",
+      "object"
+    ],
     "no-else-return": "error",
     "no-extra-label": "error",
     "no-floating-decimal": "error",
@@ -32,14 +74,27 @@
     "no-useless-escape": "error",
     "no-useless-return": "error",
     "require-await": "error",
-    "yoda": ["error", "never", { "onlyEquality": true }],
-
+    "yoda": [
+      "error",
+      "never",
+      {
+        "onlyEquality": true
+      }
+    ],
     "no-new-require": "error",
     "no-sync": "error",
-
-    "array-bracket-spacing": ["warn", "always"],
+    "array-bracket-spacing": [
+      "warn",
+      "always"
+    ],
     "block-spacing": "warn",
-    "brace-style": ["warn", "stroustrup", { "allowSingleLine": true }],
+    "brace-style": [
+      "warn",
+      "stroustrup",
+      {
+        "allowSingleLine": true
+      }
+    ],
     "comma-dangle": [
       "warn",
       {
@@ -55,15 +110,31 @@
     "computed-property-spacing": "warn",
     "eol-last": "warn",
     "func-call-spacing": "warn",
-    "indent": ["warn", 2, { "SwitchCase": 1, "MemberExpression": 1 }],
-    "linebreak-style": ["error", "unix"],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1,
+        "MemberExpression": 1
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
     "no-array-constructor": "error",
     "no-multiple-empty-lines": "warn",
     "no-new-object": "error",
     "no-trailing-spaces": "warn",
     "no-unneeded-ternary": "error",
-    "object-curly-spacing": ["warn", "always"],
-    "quotes": ["warn", "backtick"],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "quotes": [
+      "warn",
+      "backtick"
+    ],
     "require-jsdoc": [
       "off",
       {
@@ -75,10 +146,15 @@
         }
       }
     ],
-    "semi": ["error", "never"],
+    "semi": [
+      "error",
+      "never"
+    ],
     "space-infix-ops": "warn",
-    "spaced-comment": ["error", "always"],
-
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
     "arrow-spacing": "error",
     "no-useless-computed-key": "error",
     "no-useless-constructor": "error",
