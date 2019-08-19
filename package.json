@@ -18,7 +18,7 @@
     "gatsby-plugin-sitemap": "^2.2.3",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-transformer-open-graph": "^2.1.4",
-    "gatsby-transformer-sharp": "^2.2.4",
+    "gatsby-transformer-sharp": "^2.2.6",
     "localStorage": "^1.0.4",
     "luxon": "^1.17.1",
     "react": "^16.8.6",
