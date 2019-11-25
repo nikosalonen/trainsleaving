@@ -65,7 +65,7 @@ const footer = () => (
         </a>
       </div>
       <p>
-        <Link to="/cookies">Käytämme evästeitä</Link>
+        <Link to="/cookies">Tietoa evästeistä</Link>
       </p>
     </div>
   </div>
