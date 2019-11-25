@@ -134,7 +134,7 @@ class App extends React.Component {
       )
     }
 
-    this.hideSettins = () => {
+    this.hideSettings = () => {
       this.setState({
         trainSettings: {
           ...this.state.trainSettings,
@@ -339,7 +339,7 @@ class App extends React.Component {
       getStations: this.getStations,
       swapStations: this.swapStations,
       toggleSetting: this.toggleSetting,
-      hideSettins: this.hideSettins,
+      hideSettings: this.hideSettings,
       getSuggestions: this.getSuggestions,
       getSuggestionValue: this.getSuggestionValue,
       renderSuggestion: this.renderSuggestion,

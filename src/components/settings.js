@@ -13,7 +13,7 @@ const Settings = () => {
           trainSettings,
           stations,
           autocompleteOnChange,
-          hideSettins,
+          hideSettings,
         }) => (
           <div className="container">
             {/* {JSON.stringify(suggestions)} */}
@@ -23,7 +23,7 @@ const Settings = () => {
                 {` `}
                 <button
                   className="btn c-hand "
-                  onClick={hideSettins}
+                  onClick={hideSettings}
                   aria-label="Näytä asetukset"
                 >
                   <span className=" ">
