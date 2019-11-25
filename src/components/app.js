@@ -8,7 +8,7 @@ import localStorage from 'localStorage'
 import 'spectre.css'
 import './layout.css'
 import ReactFitText from 'react-fittext'
-import Ads from './ads'
+// import Ads from './ads'
 import { AppProvider } from '../context/context'
 
 class App extends React.Component {
