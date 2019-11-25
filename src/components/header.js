@@ -6,7 +6,7 @@ import './hsl.css'
 import './layout.css'
 import ReactFitText from 'react-fittext'
 
-const Header = () => (
+const Header = ({ siteTitle }) => (
   <div
     // vr #55a700
     style={{
@@ -74,7 +74,7 @@ const Header = () => (
               }}
             >
 
-              Lähtevät junat
+              {siteTitle}
             </Link>
           </h1>
         </ReactFitText>
@@ -85,6 +85,9 @@ const Header = () => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+}
+Header.defaultProps = {
+  siteTitle: ``,
 }
 
 export default Header
