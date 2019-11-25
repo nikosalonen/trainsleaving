@@ -9,6 +9,17 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-128638877-1`,
+        // Puts tracking script in the head instead of the body
+        head: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        cookieDomain: `lahtevat.info`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://lahtevat.info`,
@@ -61,19 +72,7 @@ module.exports = {
       },
     },
     // `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-128638877-1`,
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        cookieDomain: `lahtevat.info`,
-      },
-    },
+
     `gatsby-plugin-netlify`,
     `gatsby-transformer-open-graph`
   ],

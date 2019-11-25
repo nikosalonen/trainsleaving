@@ -381,16 +381,7 @@ class App extends React.Component {
     return (
       <div className="app container">
         <div className="columns">
-          <div className="column col-xs-12">
-            {/* <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
-
-            {/* <ins className="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-0748442567853482"
-              data-ad-slot="4470981255"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins> */}
-
+          <div className="column col-12">
             <Ads client={`ca-pub-0748442567853482`} slot={`4470981255`} />
           </div>
           <div className="column col-12 col-ml-auto text-right">
