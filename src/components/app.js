@@ -405,8 +405,8 @@ class App extends React.Component {
                 Vaihda suunta
               </button>
               <section>
-                {this.state.trains.length ? (
-                  <Trains />
+                <Trains />
+                {/* {this.state.trains.length ? (
                 ) : (
                   <div className="empty">
                     <div className="empty-icon">🚂</div>
@@ -427,7 +427,7 @@ class App extends React.Component {
                       </div>
                     )}
                   </div>
-                )}
+                )} */}
               </section>
             </AppProvider>
           </div>
