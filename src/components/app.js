@@ -389,7 +389,7 @@ class App extends React.Component {
           </div>
           <div className="column col-12">
             <AppProvider value={this.state}>
-              <section className="setting">
+              <section className="settings">
                 <Settings />
               </section>
               <ReactFitText maxFontSize={32}>
